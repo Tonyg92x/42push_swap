@@ -6,7 +6,7 @@
 #    By: aguay <aguay@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 08:51:26 by mmondell          #+#    #+#              #
-#    Updated: 2022/02/09 13:50:20 by tonyg            ###   ########.fr        #
+#    Updated: 2022/02/11 07:51:30 by aguay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ SRCS_FILES		=				\
 			sort.c				\
 			sort_utils.c 		\
 			ft_free2d.c 		\
+			push_swap_utils.c 	\
 
 ## ----- BONUS SOURCE FILES ----- ##
 #*B_SRCS_FILES	= 

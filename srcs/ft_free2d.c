@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/09 12:56:59 by tonyg            ###   ########.fr       */
+/*   Updated: 2022/02/11 07:54:19 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ft_free2d(char **string)
 	while (string[i])
 	{
 		free(string[i]);
-		ft_printf("Free %d\n", i);
 		i++;
 	}
 	free(string);
