@@ -3,54 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   l_list_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/11 13:08:28 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/12 09:24:21 by tonyg            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 
-// Delete the element on the top of the stack.
-void	delete_top(t_llist **list, int *len)
+// Get the number of strings in a string list
+int	argv_size(char **argv)
 {
 	int	i;
 
 	i = 0;
-	while (i + 1 < (*len))
-	{
-		list[i]->content = list[i + 1]->content;
+	while (argv[i] != NULL)
 		i++;
-	}
-	list[i]->content = 2147483647;
-	(*len)--;
+	return (i);
 }
 
-// Add the element on the top of the stack.
-void	add_top(t_llist **list, int contenu, int *len)
+t_llist	*lst_last(t_llist *l)
 {
-	int	i;
-
-	if ((*len) == 0)
-	{
-		add_element(contenu, len, list[0]);
-		return ;
-	}
-	i = (*len);
-	while (i > 0)
-	{
-		list[i]->content = list[i - 1]->content;
-		i--;
-	}
-	list[0] = add_element(contenu, len, list[0]);
+	while (l->next != NULL)
+		l = l->next;
+	return (l);
 }
 
-// Add the element in the list entered.
-t_llist	*add_element(int element, int *len, t_llist *list)
+void	add_list(t_llist *l, int content)
 {
-	list->content = element;
-	(*len)++;
-	return (list);
+	l = lst_last(l);
+	l->next = malloc(sizeof(t_llist));
+	l->next->prev = l;
+	l->next->content = content;	
+}
+
+// Print every element of both list
+void	print_list(t_llist *a, t_llist *b, int len_a, int len_b)
+{
+	ft_printf("\na\t\tb");
+	ft_printf("\n------------------------\n");
+	while (len_a > 0 || len_b > 0)
+	{
+		if (len_a > 0)
+		{
+			ft_printf("%d", a->content);
+			a = a->next;
+			len_a--;
+		}
+		ft_printf("\t\t");
+		if (len_b > 0)
+		{
+			ft_printf("%d", b->content);
+			b = b->next;
+			len_b--;
+		}
+		ft_printf("\n");
+	}
+	ft_printf("------------------------\n");
 }

@@ -1,17 +1,6 @@
 #include "libft.h"
 #include "push_swap.h"
 
-// Get the number of strings in a string list
-int	argv_size(char **argv)
-{
-	int	i;
-
-	i = 0;
-	while (argv[i] != NULL)
-		i++;
-	return (i);
-}
-
 // Fonction wich look in the list if any value is not in int limit.
 bool	lim_test(char **argv)
 {
@@ -35,35 +24,79 @@ bool	lim_test(char **argv)
 	return (false);
 }
 
+//	Fonction that return true if any arguments in
+//	argv are identical.
+bool	check_doublons(char **argv)
+{
+	int		i;
+	int		y;
+	int		*content;
+	int		size;
+
+	size = argv_size(argv);
+	content = malloc(sizeof(int) * size);
+	i = 0;
+	while (i < size)
+	{
+		y = 0;
+		while (y < size)
+		{
+			if (content[y] == ft_atoi(argv[i]))
+			{
+				ft_printf("Error\n");
+				return (true);
+			}
+			y++;
+		}
+		content[i] = ft_atoi(argv[i]);
+		i++;
+	}
+	return (false);
+}
+
 //	Put every element of the string list in a linked list.
 //	PS : Don't forget to free the memory.
-t_llist	**init_list_a(char **argv,  int *len_a, t_llist **a)
+t_llist	*init_list_a(char **argv,  int *len)
 {
-	int	i;
+	int		i;
+	t_llist	*l;
 
 	if (lim_test(argv))
 		return (NULL);
-	i = 0;
+	if (check_doublons(argv))
+		return (NULL);
+	l = malloc(sizeof(t_llist));
+	l->content = ft_atoi(argv[0]);
+	i = 1;
 	while (argv[i] != NULL && argv_size(argv) > i - 1)
 	{
-		a[i] = malloc(sizeof(t_llist));
-		add_element(ft_atoi(argv[i]), len_a, a[i]);
+		(*len) = (*len) + 1;
+		add_list(l, ft_atoi(argv[i]));
 		i++;
 	}
-	return (a);
+	return (l);
 }
 
-//	Allocate all the memory necessery for the b list
-//	PS : Don't forget to free the memory
-t_llist	**init_list_b(char **argv, t_llist **b)
+//	Put every element of the string list in a linked list.
+//	PS : Don't forget to free the memory.
+t_llist	*init_list_b(char **argv)
 {
-	int	i;
+	int		i;
+	t_llist	*l;
+	t_llist	*temp;
 
-	i = 0;
-	while (argv[i] != NULL && argv_size(argv) > i - 1)
+	if (lim_test(argv))
+		return (NULL);
+	if (check_doublons(argv))
+		return (NULL);
+	l = malloc(sizeof(t_llist));
+	i = 1;
+	while (argv_size(argv) > i - 1)
 	{
-		b[i] = malloc(sizeof(t_llist));
+		temp = lst_last(l);
+		temp->next = malloc(sizeof(t_llist));
+		temp->next->prev = temp;
 		i++;
 	}
-	return (b);
+	return (l);
 }

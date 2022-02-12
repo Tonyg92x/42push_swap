@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aguay <aguay@student.42.fr>                +#+  +:+       +#+         #
+#    By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 08:51:26 by mmondell          #+#    #+#              #
-#    Updated: 2022/02/11 07:51:30 by aguay            ###   ########.fr        #
+#    Updated: 2022/02/12 09:25:01 by tonyg            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,16 +43,10 @@ SRCS_FILES		=				\
 			main.c				\
 			l_list.c			\
 			l_list_utils.c		\
-			swap.c				\
-			push.c				\
-			rotate.c			\
-			reverse_rotate.c 	\
+			l_list_utils2.c		\
 			ft_itol.c			\
 			math.c				\
-			sort.c				\
-			sort_utils.c 		\
 			ft_free2d.c 		\
-			push_swap_utils.c 	\
 
 ## ----- BONUS SOURCE FILES ----- ##
 #*B_SRCS_FILES	= 

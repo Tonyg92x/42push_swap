@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/11 14:47:38 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/12 09:28:38 by tonyg            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,19 @@ typedef struct linked_list
 	struct linked_list	*next;
 	struct linked_list	*prev;
 	int					content;
+	int					position;
 }					t_llist;
 
 // Linked list fonctions
-void		print_list(t_llist **a, t_llist **b, int *len_a, int *len_b);
-void		add_top(t_llist **list, int contenu, int *len);
-void		delete_top(t_llist **list, int *len);
-t_llist		*add_element(int element, int *len, t_llist *list);
+t_llist		*lst_last(t_llist *l);
+void		add_list(t_llist *l, int content);
 int			argv_size(char **argv);
 bool		lim_test(char **argv);
-t_llist		**init_list_a(char **argv, int *len_a, t_llist **a);
-t_llist		**init_list_b(char **argv, t_llist **b);
+t_llist		*init_list_a(char **argv, int *len);
+t_llist		*init_list_b(char **argv);
 bool		protection_doublon(t_llist **l, int len);
+void		print_list(t_llist *a, t_llist *b, int len_a, int len_b);
+void		ft_free_lists(t_llist *a, t_llist *b);
 
 // Push_swap functions
 void		sa(t_llist **a);
