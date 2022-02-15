@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/15 12:44:27 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/15 14:58:07 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,35 +33,32 @@ t_llist	*lst_last(t_llist *l)
 
 void	add_list(t_llist *l, int content)
 {
-	l = lst_last(l);
-	l->next = malloc(sizeof(t_llist));
-	l->next->prev = l;
-	l->next->content = content;
+	t_llist	*temp;
+	
+	temp = lst_last(l);
+	temp->next = malloc(sizeof(t_llist));
+	temp->next->prev = l;
+	temp->next->content = content;
 }
 
 // Print every element of both list
-void	print_list(t_llists *l)
+void	print_list(t_llist *start_a, t_llist *start_b, int len_a, int len_b)
 {
-	int	len_a;
-	int len_b;
-
-	len_a = l->len_a;
-	len_b = l->len_b;
 	ft_printf("\na\t\tb");
 	ft_printf("\n------------------------\n");
 	while (len_a > 0 || len_b > 0)
 	{
 		if (len_a > 0)
 		{
-			ft_printf("%d", l->start_a->content);
-			l->start_a = l->start_a->next;
+			ft_printf("%d", start_a->content);
+			start_a = start_a->next;
 			len_a--;
 		}
 		ft_printf("\t\t");
 		if (len_b > 0)
 		{
-			ft_printf("%d", l->start_b->content);
-			l->start_b = l->start_b->next;
+			ft_printf("%d", start_b->content);
+			start_b = start_b->next;
 			len_b--;
 		}
 		ft_printf("\n");
@@ -69,13 +66,10 @@ void	print_list(t_llists *l)
 	ft_printf("------------------------\n");
 }
 
-void	ft_free_lists(t_llists *l)
+void	ft_free_lists(t_llist *a, t_llist *b)
 {
-	t_llist	*a;
-	t_llist	*b;
-
-	a = lst_last(l->start_a);
-	b = lst_last(l->start_b);
+	a = lst_last(a);
+	b = lst_last(b);
 	while (a->prev != NULL)
 	{
 		a = a->prev;
@@ -88,5 +82,4 @@ void	ft_free_lists(t_llists *l)
 		free(b->next);
 	}
 	free(b);
-	free(l);
 }

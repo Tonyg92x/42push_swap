@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/15 12:44:56 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/15 14:53:51 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,15 @@ typedef struct linked_list
 	int					position;
 }					t_llist;
 
-typedef struct linked_lists
-{
-	struct linked_list	*start_a;
-	struct linked_list	*start_b;
-	int					len_a;
-	int					len_b;
-}					t_llists;
-
 // Linked list fonctions
 t_llist		*lst_last(t_llist *l);
 void		add_list(t_llist *l, int content);
 int			argv_size(char **argv);
 bool		lim_test(char **argv);
-t_llist		*init_list_a(char **argv, t_llists *l);
-t_llist		*init_list_b(char **argv, t_llists *l);
-void		print_list(t_llists *l);
-void		ft_free_lists(t_llists *l);
+t_llist		*init_list_a(char **argv, int *len_a);
+t_llist		*init_list_b(char **argv);
+void		print_list(t_llist *start_a, t_llist *start_b, int len_a, int len_b);
+void		ft_free_lists(t_llist *a, t_llist *b);
 void		add_top(t_llist *start, int contenu, int *len);
 void		delete_top(t_llist *start, int *len);
 
