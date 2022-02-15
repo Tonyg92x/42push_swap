@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   l_list.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
+/*   Updated: 2022/02/15 12:54:36 by aguay            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "push_swap.h"
 
@@ -24,12 +36,36 @@ bool	lim_test(char **argv)
 	return (false);
 }
 
+// Comparer every element to look for "doulons"
+static bool	compare_elements(int *content, int size)
+{
+	int	y;
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		y = i + 1;
+		while (y < size)
+		{
+			if (content[i] == content[y])
+			{
+				ft_printf("Error\n");
+				return (true);
+			}
+			y++;
+		}
+		i++;
+	}
+	free(content);
+	return (false);
+}
+
 //	Fonction that return true if any arguments in
 //	argv are identical.
 bool	check_doublons(char **argv)
 {
 	int		i;
-	int		y;
 	int		*content;
 	int		size;
 
@@ -38,65 +74,51 @@ bool	check_doublons(char **argv)
 	i = 0;
 	while (i < size)
 	{
-		y = 0;
-		while (y < size)
-		{
-			if (content[y] == ft_atoi(argv[i]))
-			{
-				ft_printf("Error\n");
-				return (true);
-			}
-			y++;
-		}
 		content[i] = ft_atoi(argv[i]);
 		i++;
 	}
+	if (compare_elements(content, size))
+		return (true);
 	return (false);
 }
 
 //	Put every element of the string list in a linked list.
 //	PS : Don't forget to free the memory.
-t_llist	*init_list_a(char **argv,  int *len)
+t_llist	*init_list_a(char **argv, t_llists *l)
 {
 	int		i;
-	t_llist	*l;
 
 	if (lim_test(argv))
 		return (NULL);
 	if (check_doublons(argv))
 		return (NULL);
-	l = malloc(sizeof(t_llist));
-	l->content = ft_atoi(argv[0]);
+	l->start_a = malloc(sizeof(t_llist));
+	l->start_a->content = ft_atoi(argv[0]);
 	i = 1;
 	while (argv[i] != NULL && argv_size(argv) > i - 1)
 	{
-		(*len) = (*len) + 1;
-		add_list(l, ft_atoi(argv[i]));
+		add_list(l->start_a, ft_atoi(argv[i]));
+		l->len_a++;
 		i++;
 	}
-	return (l);
+	return (l->start_a);
 }
 
 //	Put every element of the string list in a linked list.
 //	PS : Don't forget to free the memory.
-t_llist	*init_list_b(char **argv)
+t_llist	*init_list_b(char **argv, t_llists *l)
 {
 	int		i;
-	t_llist	*l;
 	t_llist	*temp;
 
-	if (lim_test(argv))
-		return (NULL);
-	if (check_doublons(argv))
-		return (NULL);
-	l = malloc(sizeof(t_llist));
+	l->start_b = malloc(sizeof(t_llist));
 	i = 1;
 	while (argv_size(argv) > i - 1)
 	{
-		temp = lst_last(l);
+		temp = lst_last(l->start_b);
 		temp->next = malloc(sizeof(t_llist));
 		temp->next->prev = temp;
 		i++;
 	}
-	return (l);
+	return (l->start_b);
 }

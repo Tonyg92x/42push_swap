@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/01/20 12:51:00 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/15 09:54:13 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,72 +16,61 @@
 // Shift down every element of the
 // stack a. The last element become
 // the first one.
-void	rra(t_llist **a, int *len)
+void	rra(t_llist *start_a, int *len, bool rrr)
 {
-	int	temp;
-	int	i;
+	int		temp;
 
-	if ((*len) == 0)
+	if ((*len) < 1)
 		return ;
-	i = (*len) - 1;
-	temp = a[i]->content;
-	while (i != 0)
+	temp = (*len);
+	while (temp > 1)
 	{
-		a[i]->content = a[i - 1]->content;
-		i--;
+		start_a = start_a->next;
+		temp--;
 	}
-	a[0]->content = temp;
-	ft_printf("rra\n");
+	temp = start_a->content;
+	while (start_a->prev != NULL)
+	{
+		start_a->content = start_a->prev->content;
+		start_a = start_a->prev;
+	}
+	start_a->content = temp;
+	if (rrr == false)
+		ft_printf("rra\n");
 }
 
 // Shift down every element of the
 // stack b. The last element become
 // the first one.
-void	rrb(t_llist **b, int *len)
+void	rrb(t_llist *start_b, int *len, bool rrr)
 {
-	int	temp;
-	int	i;
+	int		temp;
 
-	if ((*len) == 0)
+	if ((*len) < 1)
 		return ;
-	i = (*len) - 1;
-	temp = b[i]->content;
-	while (i != 0)
+	temp = (*len);
+	while (temp > 1)
 	{
-		b[i]->content = b[i - 1]->content;
-		i--;
+		start_b = start_b->next;
+		temp--;
 	}
-	b[0]->content = temp;
-	ft_printf("rrb\n");
+	temp = start_b->content;
+	while (start_b->prev != NULL)
+	{
+		start_b->content = start_b->prev->content;
+		start_b = start_b->prev;
+	}
+	start_b->content = temp;
+	if (rrr == false)
+		ft_printf("rrb\n");
 }
 
 // Shift down every element of the
 // stack a and b. The last element 
 // become the first one.
-void	rrr(t_llist **a, t_llist **b, int *len_a, int *len_b)
+void	rrr(t_llist *start_a, t_llist *start_b, int *len_a, int *len_b)
 {
-	int	temp;
-	int	i;
-
-	if ((*len_a) == 0)
-		return ;
-	i = (*len_a) - 1;
-	temp = a[i]->content;
-	while (i != 0)
-	{
-		a[i]->content = a[i - 1]->content;
-		i--;
-	}
-	a[0]->content = temp;
-	if ((*len_b) == 0)
-		return ;
-	i = (*len_b) - 1;
-	temp = b[i]->content;
-	while (i != 0)
-	{
-		b[i]->content = b[i - 1]->content;
-		i--;
-	}
-	b[0]->content = temp;
+	rra(start_a, len_a, true);
+	rrb(start_b, len_b, true);
 	ft_printf("rrr\n");
 }

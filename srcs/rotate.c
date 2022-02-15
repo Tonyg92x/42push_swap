@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/01/20 12:51:11 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/15 09:31:35 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,68 +15,47 @@
 
 // Rotate every element by one to the top.
 // Element 0 go under the stack.
-void	ra(t_llist **a, int *len)
+void	ra(t_llist *start_a, int *len, bool rr)
 {
 	int	temp;
-	int	i;
+	int	temp_len;
 
-	if ((*len) == 0)
-		return ;
-	i = 0;
-	temp = a[0]->content;
-	while (i < (*len) - 1)
+	temp_len = (*len);
+	temp = start_a->content;
+	while (temp_len > 1)
 	{
-		a[i]->content = a[i + 1]->content;
-		i++;
+		start_a->content = start_a->next->content;
+		start_a = start_a->next;
+		temp_len--;
 	}
-	a[i]->content = temp;
-	ft_printf("ra\n");
+	start_a->content = temp;
+	if (rr == false)
+		ft_printf("ra\n");
 }
 
 // Rotate every element by one to the top.
 // Element 0 go under the stack.
-void	rb(t_llist **b, int *len)
+void	rb(t_llist *start_b, int *len, bool rr)
 {
 	int	temp;
-	int	i;
+	int	temp_len;
 
-	if ((*len) == 0)
-		return ;
-	i = 0;
-	temp = b[0]->content;
-	while (i < (*len) - 1)
+	temp_len = (*len);
+	temp = start_b->content;
+	while (temp_len > 1)
 	{
-		b[i]->content = b[i + 1]->content;
-		i++;
+		start_b->content = start_b->next->content;
+		start_b = start_b->next;
+		temp_len--;
 	}
-	b[i]->content = temp;
-	ft_printf("rb\n");
+	start_b->content = temp;
+	if (rr == false)
+		ft_printf("rb\n");
 }
 
-void	rr(t_llist **a, t_llist **b, int *len_a, int *len_b)
+void	rr(t_llist *start_a, t_llist *start_b, int *len_a, int *len_b)
 {
-	int	temp;
-	int	i;
-
-	if ((*len_a) == 0)
-		return ;
-	i = 0;
-	temp = a[0]->content;
-	while (i < (*len_a) - 1)
-	{
-		a[i]->content = a[i + 1]->content;
-		i++;
-	}
-	a[i]->content = temp;
-	if ((*len_b) == 0)
-		return ;
-	i = 0;
-	temp = b[0]->content;
-	while (i < (*len_b) - 1)
-	{
-		b[1]->content = b[i + 1]->content;
-		i++;
-	}
-	b[i]->content = temp;
+	ra(start_a, len_a, true);
+	rb(start_b, len_b, true);
 	ft_printf("rr\n");
 }

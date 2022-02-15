@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+         #
+#    By: aguay <aguay@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 08:51:26 by mmondell          #+#    #+#              #
-#    Updated: 2022/02/12 09:25:01 by tonyg            ###   ########.fr        #
+#    Updated: 2022/02/15 12:48:32 by aguay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ B_NAME			= push_swap_bonus
 
 ## ----- CHOOSE COMPILER AND FLAGS ----- ##
 CC				= gcc
-CFLAGS			= -Wall -Wextra -g
+CFLAGS			= -Wall -Wextra -Werror -g
 
 ## ----- PATH TO FOLDERS ----- ##
 SRCS_DIR		= srcs/
@@ -43,10 +43,14 @@ SRCS_FILES		=				\
 			main.c				\
 			l_list.c			\
 			l_list_utils.c		\
-			l_list_utils2.c		\
+			l_list_utils2.c 	\
 			ft_itol.c			\
 			math.c				\
-			ft_free2d.c 		\
+			ft_free2d.c			\
+			push.c				\
+			reverse_rotate.c	\
+			rotate.c			\
+			swap.c				\
 
 ## ----- BONUS SOURCE FILES ----- ##
 #*B_SRCS_FILES	= 

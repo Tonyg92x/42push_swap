@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   l_list_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/12 09:24:21 by tonyg            ###   ########.fr       */
+/*   Updated: 2022/02/15 12:44:27 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,30 +36,57 @@ void	add_list(t_llist *l, int content)
 	l = lst_last(l);
 	l->next = malloc(sizeof(t_llist));
 	l->next->prev = l;
-	l->next->content = content;	
+	l->next->content = content;
 }
 
 // Print every element of both list
-void	print_list(t_llist *a, t_llist *b, int len_a, int len_b)
+void	print_list(t_llists *l)
 {
+	int	len_a;
+	int len_b;
+
+	len_a = l->len_a;
+	len_b = l->len_b;
 	ft_printf("\na\t\tb");
 	ft_printf("\n------------------------\n");
 	while (len_a > 0 || len_b > 0)
 	{
 		if (len_a > 0)
 		{
-			ft_printf("%d", a->content);
-			a = a->next;
+			ft_printf("%d", l->start_a->content);
+			l->start_a = l->start_a->next;
 			len_a--;
 		}
 		ft_printf("\t\t");
 		if (len_b > 0)
 		{
-			ft_printf("%d", b->content);
-			b = b->next;
+			ft_printf("%d", l->start_b->content);
+			l->start_b = l->start_b->next;
 			len_b--;
 		}
 		ft_printf("\n");
 	}
 	ft_printf("------------------------\n");
+}
+
+void	ft_free_lists(t_llists *l)
+{
+	t_llist	*a;
+	t_llist	*b;
+
+	a = lst_last(l->start_a);
+	b = lst_last(l->start_b);
+	while (a->prev != NULL)
+	{
+		a = a->prev;
+		free(a->next);
+	}
+	free(a);
+	while (b->prev != NULL)
+	{
+		b = b->prev;
+		free(b->next);
+	}
+	free(b);
+	free(l);
 }
