@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/15 09:52:08 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/16 11:00:00 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "push_swap.h"
 
 // Add the contenu element at the top of the list entered.
-void	add_top(t_llist *start, int contenu, int *len)
+void	add_top(t_llist *start, int contenu, int *len, int wanted)
 {
 	t_llist	*temp;
 	int		tempor;
@@ -29,9 +29,11 @@ void	add_top(t_llist *start, int contenu, int *len)
 	while (temp != start)
 	{
 		temp->content = temp->prev->content;
+		temp->position_wanted = temp->position_wanted;
 		temp = temp->prev;
 	}
 	start->content = contenu;
+	start->position_wanted = wanted;
 	(*len) = (*len) + 1;
 }
 
@@ -41,6 +43,7 @@ void	delete_top(t_llist *start, int *len)
 	while (start->next != NULL)
 	{
 		start->content = start->next->content;
+		start->position_wanted = start->next->position_wanted;
 		start = start->next;
 	}
 	(*len) = (*len) - 1;

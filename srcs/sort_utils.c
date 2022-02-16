@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/01/20 12:51:20 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/16 12:29:06 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,51 +15,53 @@
 
 // Fonction that verify if the list entered
 // is sorted
-bool	l_sorted_a(t_llist **a, int *len)
+bool	l_sorted_a(t_llists *l)
 {
-	int	i;
+	t_llist	*a;
 
-	i = 0;
-	while (i < (*len) - 1)
+	a = l->start_a;
+	while (a->next != NULL)
 	{
-		if (a[i]->content > a[i + 1]->content)
+		if (a->content > a->next->content)
 			return (false);
-		i++;
+		a = a->next;
 	}
 	return (true);
 }
 
 // Fonction that verify if the list entered
 // is sorted
-bool	l_sorted_b(t_llist **b, int *len)
+bool	l_sorted_b(t_llists *l)
 {
-	int	i;
+	t_llist	*b;
 
-	i = 0;
-	while (i < (*len) - 1)
+	b = l->start_b;
+	while (b->next != NULL)
 	{
-		if (b[i]->content < b[i + 1]->content)
+		if (b->content > b->next->content)
 			return (false);
-		i++;
+		b = b->next;
 	}
 	return (true);
 }
 
 // Fonction that push all elements under the median in list b
-void	push_med_b(t_llist **a, t_llist **b, int *len_a, int *len_b)
+void	push_med_b(t_llists *l)
 {
-	int	i;
-	int	y;
-	int	median;
+	int		median;
+	int		size;
+	t_llist	*temp;
 
-	median = get_median(a, len_a);
-	i = 0;
-	y = (*len_a);
-	while (i < y)
+	size = l->len_a;
+	temp = l->start_a;
+	median = get_median(l);
+	while (size > 0)
 	{
-		if (a[0]->content <= median)
-			pb(a, b, len_a, len_b);
-		rra(a, len_a);
-		i++;
+		if (temp->position_wanted < median)
+			pb(l);
+		else
+			ra(l, false);
+		temp = l->start_a;
+		size--;
 	}
 }

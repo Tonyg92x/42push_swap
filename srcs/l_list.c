@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/15 14:54:33 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/16 10:12:47 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,22 +84,31 @@ bool	check_doublons(char **argv)
 
 //	Put every element of the string list in a linked list.
 //	PS : Don't forget to free the memory.
-t_llist	*init_list_a(char **argv, int *len_a)
+t_llist	*init_list_a(char **argv, t_llists *l)
 {
 	int		i;
 	t_llist	*start_a;
+	t_llist	*temp;
 
 	if (lim_test(argv))
 		return (NULL);
 	if (check_doublons(argv))
 		return (NULL);
+	if (check_digit(argv))
+		return (NULL);
 	start_a = malloc(sizeof(t_llist));
 	start_a->content = ft_atoi(argv[0]);
+	start_a->position_wanted = 0;
 	i = 1;
+	temp = start_a;
 	while (argv[i] != NULL && argv_size(argv) > i - 1)
 	{
-		add_list(start_a, ft_atoi(argv[i]));
-		(*len_a) = (*len_a) + 1;
+		temp->next = malloc(sizeof(t_llist));
+		temp->next->position_actuel = i;
+		temp->next->prev = temp;
+		temp->next->content = ft_atoi(argv[i]);
+		temp = temp->next;
+		l->len_a++;
 		i++;
 	}
 	return (start_a);
@@ -115,11 +124,12 @@ t_llist	*init_list_b(char **argv)
 
 	start_b = malloc(sizeof(t_llist));
 	i = 1;
+	temp = start_b;
 	while (argv_size(argv) > i - 1)
 	{
-		temp = lst_last(start_b);
 		temp->next = malloc(sizeof(t_llist));
 		temp->next->prev = temp;
+		temp = temp->next;
 		i++;
 	}
 	return (start_b);

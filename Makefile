@@ -6,7 +6,7 @@
 #    By: aguay <aguay@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 08:51:26 by mmondell          #+#    #+#              #
-#    Updated: 2022/02/15 12:48:32 by aguay            ###   ########.fr        #
+#    Updated: 2022/02/16 09:47:56 by aguay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,8 @@ SRCS_FILES		=				\
 			reverse_rotate.c	\
 			rotate.c			\
 			swap.c				\
+			sort.c				\
+			sort_utils.c		\
 
 ## ----- BONUS SOURCE FILES ----- ##
 #*B_SRCS_FILES	= 

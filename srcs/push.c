@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/15 09:54:02 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/16 10:59:23 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 // Push the first element of the stack b to the
 // First element of the stack a.
-void	pa(t_llist *start_a, t_llist *start_b, int *len_a, int *len_b)
+void	pa(t_llists *l)
 {
-	if ((*len_b) > 0)
+	if (l->len_b > 0)
 	{
-		add_top(start_a, start_b->content, len_a);
-		delete_top(start_b, len_b);
+		add_top(l->start_a, l->start_b->content, &l->len_a, l->start_b->position_wanted);
+		delete_top(l->start_b, &l->len_b);
 		ft_printf("pa\n");
 		return ;
 	}
@@ -28,12 +28,12 @@ void	pa(t_llist *start_a, t_llist *start_b, int *len_a, int *len_b)
 
 // Push the first element of the stack a to the
 // first element b.
-void	pb(t_llist *start_a, t_llist *start_b, int *len_a, int *len_b)
+void	pb(t_llists *l)
 {
-	if ((*len_a) > 0)
+	if (l->len_a > 0)
 	{
-		add_top(start_b, start_a->content, len_b);
-		delete_top(start_a, len_a);
+		add_top(l->start_b, l->start_a->content, &l->len_b, l->start_a->position_wanted);
+		delete_top(l->start_a, &l->len_a);
 		ft_printf("pb\n");
 		return ;
 	}

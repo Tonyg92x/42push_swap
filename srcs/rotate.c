@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/15 09:31:35 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/16 10:05:54 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,47 +15,63 @@
 
 // Rotate every element by one to the top.
 // Element 0 go under the stack.
-void	ra(t_llist *start_a, int *len, bool rr)
+void	ra(t_llists *l, bool rr)
 {
-	int	temp;
-	int	temp_len;
+	int		temp_content;
+	int		temp_wanted;
+	int		temp_len;
+	t_llist	*a;
 
-	temp_len = (*len);
-	temp = start_a->content;
+	if (l->len_a < 2)
+		return ;
+	a = l->start_a;
+	temp_len = l->len_a;
+	temp_content = a->content;
+	temp_wanted = a->position_wanted;
 	while (temp_len > 1)
 	{
-		start_a->content = start_a->next->content;
-		start_a = start_a->next;
+		a->content = a->next->content;
+		a->position_wanted = a->next->position_wanted;
+		a = a->next;
 		temp_len--;
 	}
-	start_a->content = temp;
+	a->content = temp_content;
+	a->position_wanted = temp_wanted;
 	if (rr == false)
 		ft_printf("ra\n");
 }
 
 // Rotate every element by one to the top.
 // Element 0 go under the stack.
-void	rb(t_llist *start_b, int *len, bool rr)
+void	rb(t_llists *l, bool rr)
 {
-	int	temp;
-	int	temp_len;
+	int		temp_content;
+	int		temp_wanted;
+	int		temp_len;
+	t_llist	*b;
 
-	temp_len = (*len);
-	temp = start_b->content;
+	if (l->len_b < 2)
+		return ;
+	b = l->start_b;
+	temp_len = l->len_b;
+	temp_content = b->content;
+	temp_wanted = b->position_wanted;
 	while (temp_len > 1)
 	{
-		start_b->content = start_b->next->content;
-		start_b = start_b->next;
+		b->content = b->next->content;
+		b->position_wanted = b->next->position_wanted;
+		b = b->next;
 		temp_len--;
 	}
-	start_b->content = temp;
+	b->content = temp_content;
+	b->position_wanted = temp_wanted;
 	if (rr == false)
 		ft_printf("rb\n");
 }
 
-void	rr(t_llist *start_a, t_llist *start_b, int *len_a, int *len_b)
+void	rr(t_llists *l)
 {
-	ra(start_a, len_a, true);
-	rb(start_b, len_b, true);
+	ra(l, true);
+	rb(l, true);
 	ft_printf("rr\n");
 }

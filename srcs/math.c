@@ -6,106 +6,99 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/02 14:27:23 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/16 12:27:08 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-// Get the biggest content in the list entered
-int	biggest_list(t_llist **list, int *len)
+//	Return the smallest value of the list a
+int	smallest_value(t_llists* l, int *plancher)
 {
-	int	i;
-	int	retour;
-	int	tab[1000000];
+	t_llist				*p;
+	int					retour;
 
-	if ((*len) == 0)
-		return (0);
-	i = 0;
-	while (list[i]->next != NULL)
+	p = l->start_a;
+	retour = 2147483647;
+	while (p)
 	{
-		tab[i] = list[i]->content;
-		i++;
+		if (p->content < retour && p->content > (*plancher))
+			retour = p->content;
+		p = p->next;
 	}
-	tab[i] = list[i]->content;
-	retour = 0;
-	i = 0;
-	while (i < (*len))
-	{
-		if (tab[i] > tab[retour])
-			retour = i;
-		i++;
-	}
-	i = tab[retour];
-	return (i);
+	(*plancher) = retour;
+	return (retour);
 }
 
-// Get the smallest content in the list entered
-int	smallest_list(t_llist **list, int *len)
+//	Return the biggest value of the list b
+int	biggest_value(t_llists* l)
 {
-	int	i;
-	int	retour;
-	int	tab[1000000];
+	t_llist	*p;
+	int		retour;
 
-	i = 0;
-	while (list[i]->next != NULL)
+	p = l->start_b;
+	retour = p->content;
+	while (p->next != NULL)
 	{
-		tab[i] = list[i]->content;
-		i++;
+		if (p->content > retour)
+			retour = p->content;
+		p = p->next;
 	}
-	tab[i] = list[i]->content;
-	retour = 0;
-	i = 0;
-	while (i < (*len))
-	{
-		if (tab[i] < tab[retour])
-			retour = i;
-		i++;
-	}
-	i = tab[retour];
-	return (i);
+	return (retour);
 }
 
-// Fonction that get the smallest
-// integer in a interger table.
-int	smallest(int *tab, int *len)
+//	Class every element in the wanted order
+int	*class_table(t_llists *l)
 {
-	int	i;
-	int	retour;
+	int			*tab;
+	int			size;
+	int			i;
+	int			plancher;
+
+	plancher = -2147483648;
+	size = l->len_a;
+	tab = malloc(sizeof(int) * l->len_a);
+	i = 0;
+	while (size > 0)
+	{
+		tab[i] = smallest_value(l, &plancher);
+		i++;
+		size--;
+	}
+	return (tab);
+}
+
+//	Put the wanted position to every elements
+void	fill_wanted_pos(t_llists *l, int *tab)
+{
+	int		i;
+	t_llist	*temp;
 
 	i = 0;
-	retour = 0;
-	while (i < (*len))
+	while (i < l->len_a)
 	{
-		if (tab[i] < tab[retour])
-			retour = i;
+		temp = l->start_a;
+		while (true)
+		{
+			if (tab[i] == temp->content)
+			{
+				temp->position_wanted = i;
+				break;
+			}
+			temp = temp->next;
+		}
 		i++;
 	}
-	i = tab[retour];
-	tab[retour] = 2147483647;
-	return (i);
 }
 
 // Get the value of the median
-int	get_median(t_llist **l, int *len)
+int	get_median(t_llists *l)
 {
-	int	temp[1000000];
-	int	retour[1000000];
-	int	i;
+	int	*tab;
 
-	i = 0;
-	while (i < (*len))
-	{
-		temp[i] = l[i]->content;
-		i++;
-	}
-	i = 0;
-	while (i < (*len))
-	{
-		retour[i] = smallest(temp, len);
-		i++;
-	}
-	i = retour[((*len)) / 2];
-	return (i);
+	tab = class_table(l);
+	fill_wanted_pos(l, tab);
+	free(tab);
+	return (l->len_a / 2);
 }

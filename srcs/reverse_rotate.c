@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/15 09:54:13 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/16 10:04:54 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,31 @@
 // Shift down every element of the
 // stack a. The last element become
 // the first one.
-void	rra(t_llist *start_a, int *len, bool rrr)
+void	rra(t_llists *l, bool rrr)
 {
 	int		temp;
+	int		temp_wanted;
+	t_llist	*a;
 
-	if ((*len) < 1)
+	a = l->start_a;
+	if (l->len_a < 2)
 		return ;
-	temp = (*len);
+	temp = l->len_a;
 	while (temp > 1)
 	{
-		start_a = start_a->next;
+		a = a->next;
 		temp--;
 	}
-	temp = start_a->content;
-	while (start_a->prev != NULL)
+	temp = a->content;
+	temp_wanted = a->position_wanted;
+	while (a->prev != NULL)
 	{
-		start_a->content = start_a->prev->content;
-		start_a = start_a->prev;
+		a->content = a->prev->content;
+		a->position_wanted = a->prev->position_wanted;
+		a = a->prev;
 	}
-	start_a->content = temp;
+	a->content = temp;
+	a->position_wanted = temp_wanted;
 	if (rrr == false)
 		ft_printf("rra\n");
 }
@@ -42,25 +48,31 @@ void	rra(t_llist *start_a, int *len, bool rrr)
 // Shift down every element of the
 // stack b. The last element become
 // the first one.
-void	rrb(t_llist *start_b, int *len, bool rrr)
+void	rrb(t_llists *l, bool rrr)
 {
 	int		temp;
+	int		temp_wanted;
+	t_llist	*b;
 
-	if ((*len) < 1)
+	b = l->start_b;
+	if (l->len_b)
 		return ;
-	temp = (*len);
+	temp = l->len_b;
 	while (temp > 1)
 	{
-		start_b = start_b->next;
+		b = b->next;
 		temp--;
 	}
-	temp = start_b->content;
-	while (start_b->prev != NULL)
+	temp = b->content;
+	temp_wanted = b->position_wanted;
+	while (b->prev != NULL)
 	{
-		start_b->content = start_b->prev->content;
-		start_b = start_b->prev;
+		b->content = b->prev->content;
+		b->position_wanted = b->prev->position_wanted;
+		b = b->prev;
 	}
-	start_b->content = temp;
+	b->content = temp;
+	b->position_wanted = temp_wanted;
 	if (rrr == false)
 		ft_printf("rrb\n");
 }
@@ -68,9 +80,9 @@ void	rrb(t_llist *start_b, int *len, bool rrr)
 // Shift down every element of the
 // stack a and b. The last element 
 // become the first one.
-void	rrr(t_llist *start_a, t_llist *start_b, int *len_a, int *len_b)
+void	rrr(t_llists *l)
 {
-	rra(start_a, len_a, true);
-	rrb(start_b, len_b, true);
+	rra(l, true);
+	rrb(l, true);
 	ft_printf("rrr\n");
 }

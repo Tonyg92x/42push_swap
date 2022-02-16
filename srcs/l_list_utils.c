@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/15 14:58:07 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/16 08:26:49 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,62 +24,80 @@ int	argv_size(char **argv)
 	return (i);
 }
 
-t_llist	*lst_last(t_llist *l)
+bool	check_digit(char **argv)
 {
-	while (l->next != NULL)
-		l = l->next;
-	return (l);
-}
+	int	i;
+	int	y;
+	int	size;
 
-void	add_list(t_llist *l, int content)
-{
-	t_llist	*temp;
-	
-	temp = lst_last(l);
-	temp->next = malloc(sizeof(t_llist));
-	temp->next->prev = l;
-	temp->next->content = content;
+	size = argv_size(argv);
+	i = 0;
+	while (i < size)
+	{
+		y = 0;
+		while (argv[i][y])
+		{
+			if (isdigit(argv[i][y]) == false && argv[i][y] != ' ' &&
+			argv[i][y] != '-')
+			{
+				ft_printf("Error\n");
+				return (true);
+			}
+			y++;
+		}
+		i++;
+	}
+	return (false);
 }
 
 // Print every element of both list
-void	print_list(t_llist *start_a, t_llist *start_b, int len_a, int len_b)
+void	print_lists(t_llists *l)
 {
+	t_llist	*a;
+	t_llist	*b;
+
+	a = l->start_a;
+	b = l->start_b;
 	ft_printf("\na\t\tb");
 	ft_printf("\n------------------------\n");
-	while (len_a > 0 || len_b > 0)
+	while (l->len_a > 0 || l->len_b > 0)
 	{
-		if (len_a > 0)
+		if (l->len_a > 0)
 		{
-			ft_printf("%d", start_a->content);
-			start_a = start_a->next;
-			len_a--;
+			ft_printf("%d", a->content);
+			a = a->next;
+			l->len_a--;
 		}
 		ft_printf("\t\t");
-		if (len_b > 0)
+		if (l->len_b > 0)
 		{
-			ft_printf("%d", start_b->content);
-			start_b = start_b->next;
-			len_b--;
+			ft_printf("%d", b->content);
+			b = b->next;
+			l->len_b--;
 		}
 		ft_printf("\n");
 	}
 	ft_printf("------------------------\n");
 }
 
-void	ft_free_lists(t_llist *a, t_llist *b)
+void	ft_free_lists(t_llists *l)
 {
-	a = lst_last(a);
-	b = lst_last(b);
-	while (a->prev != NULL)
+	t_llist	*a;
+	t_llist	*b;
+
+	a = l->start_a;
+	b = l->start_b;
+	while (a->next != NULL)
 	{
-		a = a->prev;
-		free(a->next);
+		a = a->next;
+		free(a->prev);
 	}
 	free(a);
-	while (b->prev != NULL)
+	while (b->next != NULL)
 	{
-		b = b->prev;
-		free(b->next);
+		b = b->next;
+		free(b->prev);
 	}
 	free(b);
+	free(l);
 }
