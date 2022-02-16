@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/16 08:26:49 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/16 14:47:01 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,25 +55,29 @@ void	print_lists(t_llists *l)
 {
 	t_llist	*a;
 	t_llist	*b;
+	int		len_a;
+	int		len_b;
 
+	len_a = l->len_a;
+	len_b = l->len_b;
 	a = l->start_a;
 	b = l->start_b;
 	ft_printf("\na\t\tb");
 	ft_printf("\n------------------------\n");
-	while (l->len_a > 0 || l->len_b > 0)
+	while (len_a > 0 || len_b > 0)
 	{
-		if (l->len_a > 0)
+		if (len_a > 0)
 		{
 			ft_printf("%d", a->content);
 			a = a->next;
-			l->len_a--;
+			len_a--;
 		}
 		ft_printf("\t\t");
-		if (l->len_b > 0)
+		if (len_b > 0)
 		{
 			ft_printf("%d", b->content);
 			b = b->next;
-			l->len_b--;
+			len_b--;
 		}
 		ft_printf("\n");
 	}

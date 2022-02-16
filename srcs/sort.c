@@ -6,30 +6,62 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/16 12:42:59 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/16 14:46:27 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-// static void	shuffle(t_llists *l)
-// {
-// 	if (l_sorted_a(l) != true)
-// 	{
-// 		while (a[0]->content != smallest_list(a, len_a))
-// 			rra(a, len_a);
-// 		pb(a, b, len_a, len_b);
-// 	}
-// 	else if (l_sorted_b(b, len_b) != true)
-// 	{
-// 		while (b[0]->content != biggest_list(b, len_b))
-// 			rrb(b, len_b);
-// 		pa(a, b, len_a, len_b);
-// 	}
-// }
+int	smallest_list(t_llists *l)
+{
+	t_llist	*temp;
+	int		retour;
 
-// // Sorting elements in both list using reverse rotate.
+	retour = 2147483647;
+	temp = l->start_a;
+	while(temp != NULL)
+	{
+		if (temp->position_wanted < retour)
+			retour = temp->position_wanted;
+		temp = temp->next;
+	}
+	return (retour);
+}
+
+int	biggest_list(t_llists *l)
+{
+	t_llist	*temp;
+	int		retour;
+
+	retour = -2147483648;
+	temp = l->start_a;
+	while (temp != NULL)
+	{
+		if (temp->position_wanted > retour)
+			retour = temp->position_wanted;
+		temp = temp->next;
+	}
+	return (retour);
+}
+
+static void	shuffle(t_llists *l)
+{
+	if (l_sorted_a(l) != true)
+	{
+		while (l->start_a->position_wanted != smallest_list(l))
+			rra(l, false);
+		pb(l);
+	}
+	else if (l_sorted_b(l) != true)
+	{
+		while (l->start_b->position_wanted != biggest_list(l))
+			rrb(l, false);
+		pa(l);
+	}
+}
+
+// Sorting elements in both list using reverse rotate.
 static void	sort(t_llists *l)
 {
 	int	nb_exec;

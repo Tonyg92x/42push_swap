@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/16 10:04:54 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/16 14:52:11 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,8 @@ void	rra(t_llists *l, bool rrr)
 	a = l->start_a;
 	if (l->len_a < 2)
 		return ;
-	temp = l->len_a;
-	while (temp > 1)
-	{
+	while (a->next != NULL)
 		a = a->next;
-		temp--;
-	}
 	temp = a->content;
 	temp_wanted = a->position_wanted;
 	while (a->prev != NULL)

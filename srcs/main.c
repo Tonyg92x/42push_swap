@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/16 12:22:33 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/16 14:49:14 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	main(int argc, char **argv)
 	if (l->start_a == NULL)
 		return (0);
 	l->start_b = init_list_b(argv);
+	print_lists(l);
 	sort_ll(l);
 	print_lists(l);
 	if (argc == 2)

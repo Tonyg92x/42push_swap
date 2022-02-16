@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/16 11:08:53 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/16 14:32:40 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void		rrr(t_llists *l);
 // libft addons
 long int	ft_atol(char *string);
 int			smallest(int *tab, int *len);
-int			smallest_list(t_llist **tab, int *len);
-int			biggest_list(t_llist **list, int *len);
+int			smallest_list(t_llists *l);
+int			biggest_list(t_llists *l);
 int			get_median(t_llists *l);
 void		ft_free2d(char **string);
 
