@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/16 14:49:14 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/18 14:01:27 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,17 @@ int	main(int argc, char **argv)
 	t_llists	*l;
 
 	l = malloc(sizeof(t_llists));
+	if (!l)
+		return (0);
 	l->len_a = 1;
 	l->len_b = 0;
+	l->start_b = NULL;
 	if (argc <= 1)
 		return (0);
 	argv = initiate_argv(argv, argc);
-	l->start_a = init_list_a(argv, l);
+	l->start_a = init_list(argv, l);
 	if (l->start_a == NULL)
 		return (0);
-	l->start_b = init_list_b(argv);
-	print_lists(l);
 	sort_ll(l);
 	print_lists(l);
 	if (argc == 2)

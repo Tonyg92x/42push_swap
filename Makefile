@@ -6,7 +6,7 @@
 #    By: aguay <aguay@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 08:51:26 by mmondell          #+#    #+#              #
-#    Updated: 2022/02/16 09:47:56 by aguay            ###   ########.fr        #
+#    Updated: 2022/02/18 10:19:25 by aguay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,6 @@ SRCS_FILES		=				\
 			main.c				\
 			l_list.c			\
 			l_list_utils.c		\
-			l_list_utils2.c 	\
 			ft_itol.c			\
 			math.c				\
 			ft_free2d.c			\

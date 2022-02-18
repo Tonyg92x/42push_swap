@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/16 14:46:27 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/18 14:08:15 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,17 @@ int	smallest_list(t_llists *l)
 {
 	t_llist	*temp;
 	int		retour;
+	int		len;
 
+	len = l->len_a;
 	retour = 2147483647;
 	temp = l->start_a;
-	while(temp != NULL)
+	while(len > 0)
 	{
 		if (temp->position_wanted < retour)
 			retour = temp->position_wanted;
 		temp = temp->next;
+		len--;
 	}
 	return (retour);
 }
@@ -33,14 +36,17 @@ int	biggest_list(t_llists *l)
 {
 	t_llist	*temp;
 	int		retour;
+	int		len;
 
+	len = l->len_b;
 	retour = -2147483648;
-	temp = l->start_a;
-	while (temp != NULL)
+	temp = l->start_b;
+	while (len > 0)
 	{
 		if (temp->position_wanted > retour)
 			retour = temp->position_wanted;
 		temp = temp->next;
+		len--;
 	}
 	return (retour);
 }
@@ -82,7 +88,7 @@ static void	sort(t_llists *l)
 		else if (l_sorted_b(l) != true)
 			rrb(l, false);
 		nb_exec++;
-		if (nb_exec > (l->len_a * 3) || nb_exec > (l->len_b * 3))
+		if (nb_exec > (l->len_a * 2) || nb_exec > (l->len_b * 3))
 		{
 			shuffle(l);
 			nb_exec = 0;
@@ -98,4 +104,6 @@ void	sort_ll(t_llists *l)
 		return ;
 	push_med_b(l);
 	sort(l);
+	while (l->len_b > 0)
+		pa(l);
 }

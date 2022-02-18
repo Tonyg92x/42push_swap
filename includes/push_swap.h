@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/16 14:32:40 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/18 10:55:53 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ int			argv_size(char **argv);
 bool		lim_test(char **argv);
 bool		check_digit(char **argv);
 bool		check_doublons(char **argv);
-t_llist		*init_list_a(char **argv, t_llists *l);
-t_llist		*init_list_b(char **argv);
+t_llist		*init_list(char **argv, t_llists *l);
 void		print_lists(t_llists *l);
 void		ft_free_lists(t_llists *l);
 void		add_top(t_llist *start, int contenu, int *len, int wanted);

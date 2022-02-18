@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/16 14:52:11 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/18 13:37:50 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,20 @@
 // the first one.
 void	rra(t_llists *l, bool rrr)
 {
-	int		temp;
-	int		temp_wanted;
-	t_llist	*a;
+	t_llist	*l_temp;
 
-	a = l->start_a;
 	if (l->len_a < 2)
-		return ;
-	while (a->next != NULL)
-		a = a->next;
-	temp = a->content;
-	temp_wanted = a->position_wanted;
-	while (a->prev != NULL)
-	{
-		a->content = a->prev->content;
-		a->position_wanted = a->prev->position_wanted;
-		a = a->prev;
-	}
-	a->content = temp;
-	a->position_wanted = temp_wanted;
+		return;
+	l_temp = l->start_a;
+	l->start_a = l->start_a->next;
+	l->start_a->prev = NULL;
+	l_temp->next = NULL;
+	while (l->start_a->next != NULL)
+		l->start_a = l->start_a->next;
+	l->start_a->next = l_temp;
+	l_temp->prev = l->start_a;
+	while (l->start_a->prev != NULL)
+		l->start_a = l->start_a->prev;
 	if (rrr == false)
 		ft_printf("rra\n");
 }
@@ -46,31 +41,22 @@ void	rra(t_llists *l, bool rrr)
 // the first one.
 void	rrb(t_llists *l, bool rrr)
 {
-	int		temp;
-	int		temp_wanted;
-	t_llist	*b;
+	t_llist	*l_temp;
 
-	b = l->start_b;
-	if (l->len_b)
-		return ;
-	temp = l->len_b;
-	while (temp > 1)
-	{
-		b = b->next;
-		temp--;
-	}
-	temp = b->content;
-	temp_wanted = b->position_wanted;
-	while (b->prev != NULL)
-	{
-		b->content = b->prev->content;
-		b->position_wanted = b->prev->position_wanted;
-		b = b->prev;
-	}
-	b->content = temp;
-	b->position_wanted = temp_wanted;
+	if (l->len_b < 2)
+		return;
+	l_temp = l->start_b;
+	l->start_b = l->start_b->next;
+	l->start_b->prev = NULL;
+	l_temp->next = NULL;
+	while (l->start_b->next != NULL)
+		l->start_b = l->start_b->next;
+	l->start_b->next = l_temp;
+	l_temp->prev = l->start_b;
+	while (l->start_b->prev != NULL)
+		l->start_b = l->start_b->prev;
 	if (rrr == false)
-		ft_printf("rrb\n");
+		ft_printf("rra\n");
 }
 
 // Shift down every element of the

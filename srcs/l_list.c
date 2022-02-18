@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/16 10:12:47 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/18 10:55:23 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ bool	check_doublons(char **argv)
 
 //	Put every element of the string list in a linked list.
 //	PS : Don't forget to free the memory.
-t_llist	*init_list_a(char **argv, t_llists *l)
+t_llist	*init_list(char **argv, t_llists *l)
 {
 	int		i;
 	t_llist	*start_a;
@@ -112,25 +112,4 @@ t_llist	*init_list_a(char **argv, t_llists *l)
 		i++;
 	}
 	return (start_a);
-}
-
-//	Put every element of the string list in a linked list.
-//	PS : Don't forget to free the memory.
-t_llist	*init_list_b(char **argv)
-{
-	int		i;
-	t_llist	*start_b;
-	t_llist	*temp;
-
-	start_b = malloc(sizeof(t_llist));
-	i = 1;
-	temp = start_b;
-	while (argv_size(argv) > i - 1)
-	{
-		temp->next = malloc(sizeof(t_llist));
-		temp->next->prev = temp;
-		temp = temp->next;
-		i++;
-	}
-	return (start_b);
 }

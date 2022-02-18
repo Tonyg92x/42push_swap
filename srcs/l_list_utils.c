@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/16 14:47:01 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/18 13:58:21 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,22 +86,26 @@ void	print_lists(t_llists *l)
 
 void	ft_free_lists(t_llists *l)
 {
-	t_llist	*a;
-	t_llist	*b;
+	t_llist	*temp;
 
-	a = l->start_a;
-	b = l->start_b;
-	while (a->next != NULL)
+	if (l->start_a != NULL)
 	{
-		a = a->next;
-		free(a->prev);
+		while (l->start_a->next != NULL)
+		{
+			temp = l->start_a->next;
+			free(l->start_a);
+			l->start_a = temp;
+		}
+		free(l->start_a);
 	}
-	free(a);
-	while (b->next != NULL)
+	if (l->start_b != NULL)
 	{
-		b = b->next;
-		free(b->prev);
+		while (l->start_b->next != NULL)
+		{
+			temp = l->start_b->next;
+			free(l->start_b);
+			l->start_b = temp;
+		}
+		free(l->start_b);
 	}
-	free(b);
-	free(l);
 }
