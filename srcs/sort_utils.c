@@ -3,90 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/18 08:55:15 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/19 14:48:31 by tonyg            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-// Fonction that verify if the list entered
-// is sorted
-bool	l_sorted_a(t_llists *l)
+void	sort_b(t_llists *l)
 {
-	int		temp;
-	t_llist	*a;
-
-	temp = l->len_a;
-	a = l->start_a;
-	while (temp > 1)
+	while (l->len_b > 0)
 	{
-		if (a->content > a->next->content)
-			return (false);
-		a = a->next;
-		temp--;
+		if (l->start_b->position_wanted == l->count)
+		{
+			pa(l);
+			rra(l, false);
+			l->count++;
+		}
+		else
+			rb(l, false);
 	}
-	return (true);
-}
-
-// Fonction that verify if the list entered
-// is sorted
-bool	l_sorted_b(t_llists *l)
-{
-	int		temp;
-	t_llist	*b;
-
-	temp = l->len_b;
-	b = l->start_b;
-	while (temp > 1)
-	{
-		if (b->content < b->next->content)
-			return (false);
-		b = b->next;
-		temp--;
-	}
-	return (true);
-}
-
-//	Verify if all element are already in the
-//	list b to eleminate extra rotation.
-bool	is_done(t_llists *l, int median)
-{
-	int		len;
-	t_llist	*a;
-
-	a = l->start_a;
-	len = l->len_a;
-	while (len > 0)
-	{
-		if (a->position_wanted < median)
-			return (false);
-		a = a->next;
-		len--;
-	}
-	return (true);
 }
 
 // Fonction that push all elements under the median in list b
-void	push_med_b(t_llists *l)
+void	get_lowest_half_up(t_llists *l)
 {
-	int		median;
-	int		size;
-	t_llist	*temp;
+	int	i;
 
-	size = l->len_a;
-	temp = l->start_a;
-	median = get_median(l);
-	while (size > 0 && is_done(l, median) == false)
+	i = l->len_a;
+	while (i > 0)
 	{
-		if (temp->position_wanted < median)
+		if (l->start_a->position_wanted < l->median)
 			pb(l);
 		else
 			ra(l, false);
-		temp = l->start_a;
-		size--;
+		i--;
 	}
+	i = l->len_b;
+}
+
+void	get_highest_quater_up(t_llists *l)
+{
+	int	i;
+
+	i = l->median;
+	while (i > 0)
+	{
+		if (l->start_a->position_wanted > l->un_quart)
+			pb(l);
+		i--;
+	}
+}
+
+void	get_highest_half_up(t_llists *l)
+{
+	while (l->start_a->position_wanted >= l->median)
+		pb(l);
 }

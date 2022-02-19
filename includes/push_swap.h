@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/18 10:55:53 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/19 14:49:10 by tonyg            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct linked_list
 	struct linked_list	*prev;
 	int					position_wanted;
 	int					content;
-	int					position_actuel;
 }					t_llist;
 
 typedef struct linked_lists
@@ -38,6 +37,11 @@ typedef struct linked_lists
 	struct linked_list	*start_b;
 	int					len_a;
 	int					len_b;
+	int					un_huit;
+	int					un_quart;
+	int					median;
+	int					count;
+	int					option;
 }					t_llists;
 
 // Linked list fonctions
@@ -67,14 +71,16 @@ void		rrr(t_llists *l);
 // libft addons
 long int	ft_atol(char *string);
 int			smallest(int *tab, int *len);
-int			smallest_list(t_llists *l);
-int			biggest_list(t_llists *l);
-int			get_median(t_llists *l);
 void		ft_free2d(char **string);
 
 // algo fonctions
-bool		l_sorted_a(t_llists *l);
-bool		l_sorted_b(t_llists *l);
 void		sort_ll(t_llists *l);
-void		push_med_b(t_llists *l);
+void		init_med(t_llists *l);
+int			smallest_list(t_llists *l);
+int			biggest_list(t_llists *l);
+int			get_median(t_llists *l);
+void		sort_b(t_llists *l);
+void		get_lowest_half_up(t_llists *l);
+void		get_highest_half_up(t_llists *l);
+void		get_highest_quater_up(t_llists *l);
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   l_list.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/18 10:55:23 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/19 13:58:16 by tonyg            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ t_llist	*init_list(char **argv, t_llists *l)
 	while (argv[i] != NULL && argv_size(argv) > i - 1)
 	{
 		temp->next = malloc(sizeof(t_llist));
-		temp->next->position_actuel = i;
 		temp->next->prev = temp;
 		temp->next->content = ft_atoi(argv[i]);
 		temp = temp->next;
@@ -112,4 +111,22 @@ t_llist	*init_list(char **argv, t_llists *l)
 		i++;
 	}
 	return (start_a);
+}
+
+// Populate data on the list to organise sorting
+void	init_med(t_llists *l)
+{
+	int		median;
+
+	median = get_median(l);
+	l->un_huit = median / 4;
+	l->un_quart = median / 2;
+	l->median = median;
+	l->count = 0;
+	if (l->len_a <= 40 && l->len_a >= 1)
+		l->option = 2;
+	else if (l->len_a > 40 && l->len_a <= 80)
+		l->option = 3;
+	else
+		l->option = 4;
 }
