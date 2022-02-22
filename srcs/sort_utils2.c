@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/21 11:13:28 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/22 16:12:16 by tonyg            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,13 @@ bool	smallest_pos_wanted(t_llist *l)
 	int	i;
 
 	i = l->position_wanted;
-	while (l->next != NULL)
+	while (l->prev != NULL)
+		l = l->prev;
+	while (l)
 	{
 		if (l->position_wanted < i)
 			return (false);
 		l = l->next;
-	}
-	while (l->prev != NULL)
-	{
-		if (l->position_wanted < i)
-			return (false);
-		l = l->prev;
 	}
 	return (true);
 }
@@ -42,17 +38,13 @@ bool	biggest_pos_wanted(t_llist *l)
 	int	i;
 
 	i = l->position_wanted;
-	while (l != NULL)
+	while (l->prev != NULL)
+		l = l->prev;
+	while (l)
 	{
 		if (l->position_wanted > i)
 			return (false);
 		l = l->next;
-	}
-	while (l->prev != NULL)
-	{
-		if (l->position_wanted > i)
-			return (false);
-		l = l->prev;
 	}
 	return (true);
 }

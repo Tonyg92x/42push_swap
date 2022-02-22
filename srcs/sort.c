@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/21 11:29:47 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/22 16:17:11 by tonyg            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ void	sort_o3(t_llists *l)
 	temp = l->start_a;
 	while (sorted_a(l) != true)
 	{
-		if (temp->position_wanted == smallest_pos_wanted(temp))
+		if (smallest_pos_wanted(temp))
 		{
 			ra(l, false);
 			sa(l, false);
 			rra(l, false);
 		}
-		else if (temp->next->position_wanted  == smallest_pos_wanted(temp) && temp->next->next->position_wanted)
+		else if (smallest_pos_wanted(temp->next) && biggest_pos_wanted(temp->next->next))
 			sa(l, false);
-		else if  (temp->next->position_wanted == l->count)
+		else if  (smallest_pos_wanted(temp->next))
 			ra(l, false);
-		else if (temp->next->next->position_wanted == 0 && temp->position_wanted == 1)
+		else if (smallest_pos_wanted(temp->next->next) && biggest_pos_wanted(temp->next))
 			rra(l, false);
 		else
 		{
@@ -41,7 +41,7 @@ void	sort_o3(t_llists *l)
 	}
 }
 
-// sort 5 element of list a
+//	sort 5 element of list a
 void	sort_o5(t_llists *l)
 {
 	int	i;
@@ -62,12 +62,19 @@ void	sort_o5(t_llists *l)
 	pa(l);
 }
 
+//	sort the list
+
+
 // Solve efficiently the sorting of integer agument
 // with specified actions.
 void	sort_ll(t_llists *l)
 {
+	if (sorted_a(l))
+		return;
 	if (l->option == 3)
 		sort_o3(l);
 	else if (l->option == 5)
 		sort_o5(l);
+	else
+		sort(l);
 }
