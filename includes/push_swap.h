@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/19 14:49:10 by tonyg            ###   ########.fr       */
+/*   Updated: 2022/02/21 11:14:21 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,10 @@ void		sort_b(t_llists *l);
 void		get_lowest_half_up(t_llists *l);
 void		get_highest_half_up(t_llists *l);
 void		get_highest_quater_up(t_llists *l);
+bool		sorted(t_llists *l);
+bool		sorted_a(t_llists *l);
+bool		sorted_b(t_llists *l);
+bool		smallest_pos_wanted(t_llist *l);
+bool		biggest_pos_wanted(t_llist *l);
+
 #endif

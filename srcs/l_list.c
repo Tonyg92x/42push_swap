@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   l_list.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/19 13:58:16 by tonyg            ###   ########.fr       */
+/*   Updated: 2022/02/21 06:42:53 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,10 +123,12 @@ void	init_med(t_llists *l)
 	l->un_quart = median / 2;
 	l->median = median;
 	l->count = 0;
-	if (l->len_a <= 40 && l->len_a >= 1)
-		l->option = 2;
-	else if (l->len_a > 40 && l->len_a <= 80)
+	if (l->len_a <= 3)
 		l->option = 3;
+	else if (l->len_a <= 5)
+		l->option = 5;
+	else if (l->len_a <= 110)
+		l->option = 100;
 	else
-		l->option = 4;
+		l->option = 500;
 }

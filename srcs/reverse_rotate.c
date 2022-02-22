@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/18 13:37:50 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/21 10:25:48 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,12 @@ void	rra(t_llists *l, bool rrr)
 	if (l->len_a < 2)
 		return;
 	l_temp = l->start_a;
-	l->start_a = l->start_a->next;
-	l->start_a->prev = NULL;
-	l_temp->next = NULL;
-	while (l->start_a->next != NULL)
-		l->start_a = l->start_a->next;
-	l->start_a->next = l_temp;
-	l_temp->prev = l->start_a;
-	while (l->start_a->prev != NULL)
-		l->start_a = l->start_a->prev;
+	while (l_temp->next != NULL)
+		l_temp = l_temp->next;
+	l->start_a->prev = l_temp;
+	l_temp->prev->next = NULL;
+	l_temp->next = l->start_a;
+	l->start_a = l_temp;
 	if (rrr == false)
 		ft_printf("rra\n");
 }
@@ -46,15 +43,14 @@ void	rrb(t_llists *l, bool rrr)
 	if (l->len_b < 2)
 		return;
 	l_temp = l->start_b;
-	l->start_b = l->start_b->next;
-	l->start_b->prev = NULL;
-	l_temp->next = NULL;
-	while (l->start_b->next != NULL)
-		l->start_b = l->start_b->next;
-	l->start_b->next = l_temp;
-	l_temp->prev = l->start_b;
-	while (l->start_b->prev != NULL)
-		l->start_b = l->start_b->prev;
+	while (l_temp->next != NULL)
+		l_temp = l_temp->next;
+	l->start_b->prev = l_temp;
+	l_temp->prev = NULL;
+	l_temp->next = l->start_b;
+	l->start_b = l_temp;
+	if (rrr == false)
+		ft_printf("rra\n");
 	if (rrr == false)
 		ft_printf("rra\n");
 }
