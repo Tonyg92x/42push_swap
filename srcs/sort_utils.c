@@ -6,7 +6,7 @@
 /*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/22 21:09:46 by tonyg            ###   ########.fr       */
+/*   Updated: 2022/02/23 08:52:37 by tonyg            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,56 @@ bool	biggest_pos_wanted(t_llist *l)
 	return (true);
 }
 
-//	Get in the start of a list with his size.
-//	get out the median of the pos wanted.
-int	get_median(t_llist *l, int size) // NOT DONE NEED TO CLASSE THE TABLE WHEN FULLING IT
+//	Return the smallest position wanted in
+//	the list that is bigger then plancher
+int	smal_pos(t_llist *l, int *plancher)
 {
-	int		tab[size];
-	int		i;
 	t_llist	*temp;
+	int		retour;
 
-	i = 0;
+	retour = 2147483647;
 	temp = l;
 	while (temp)
 	{
-		tab[i++] = temp->position_wanted;
+		if (temp->position_wanted < retour && temp->position_wanted > (*plancher))
+			retour = temp->position_wanted;
 		temp = temp->next;
 	}
+	(*plancher) = retour;
+	return (retour);
+}
+
+//	Get in the start of a list with his size.
+//	get out the median of the pos wanted.
+int	get_median(t_llist *l, int size)
+{
+	int		tab[size];
+	int		i;
+	int		plancher;
+
+	plancher = -2147483648;
+	i = 0;
+	while (i < size)
+		tab[i++] = smal_pos(l, &plancher);
 	return (tab[size / 2]);
+}
+
+//	Push the every element smaller than median
+void	first_push(t_llists *l)
+{
+	int	median;
+	int	size;
+
+	size = l->len_a;
+	median = get_median(l->start_a, l->len_a);
+	while (size > 0)
+	{
+		if (l->start_a->position_wanted < median)
+			pb(l);
+		else if (l->len_b > 1 && l->start_b->position_wanted > l->start_b->next->content)
+			rr(l);
+		else
+			ra(l, false);
+		size--;
+	}
 }

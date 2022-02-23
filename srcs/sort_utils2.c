@@ -6,7 +6,7 @@
 /*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/22 20:47:46 by tonyg            ###   ########.fr       */
+/*   Updated: 2022/02/23 08:23:08 by tonyg            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ bool	sorted_b(t_llists *l)
 	return (true);
 }
 
+//	Return true if both list are sorted
 bool	sorted(t_llists *l)
 {
 	if (sorted_a(l) == false)
@@ -57,4 +58,49 @@ bool	sorted(t_llists *l)
 	if (sorted_b(l) == false)
 		return (false);
 	return (true);
+}
+
+//	Push half of the biggest element to a
+void	push_med_b(t_llists *l)
+{
+	int	median;
+	int	size;
+
+	median = get_median(l->start_b, l->len_b);
+	size = l->len_b;
+	while (size > 0)
+	{
+		if (l->start_b->position_wanted == l->count)
+		{
+			pa(l);
+			ra(l, false);
+			l->count++;
+		}
+		else if (l->start_b->position_wanted > median)
+		{
+			pa(l);
+			l->pushed++;
+		}
+		else
+			rb(l, false);
+		size--;
+	}
+}
+
+void	sort_b(t_llists	*l)
+{
+	while (l->len_b > 0)
+	{
+		if (l->start_b->position_wanted == l->count)
+		{
+			pa(l);
+			l->count++;
+			if (l->len_b > 0 && l->start_b->position_wanted != l->count)
+				rr(l);
+			else
+				ra(l, false);
+		}
+		else
+			rb(l, false);
+	}
 }

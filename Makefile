@@ -6,7 +6,7 @@
 #    By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 08:51:26 by mmondell          #+#    #+#              #
-#    Updated: 2022/02/22 21:00:35 by tonyg            ###   ########.fr        #
+#    Updated: 2022/02/23 07:49:23 by tonyg            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ SRCS_FILES		=				\
 			sort.c				\
 			sort_utils.c		\
 			sort_utils2.c		\
+			sort_utils3.c		\
 
 ## ----- BONUS SOURCE FILES ----- ##
 #*B_SRCS_FILES	= 
