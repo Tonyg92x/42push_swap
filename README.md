@@ -37,8 +37,10 @@
 
 <p align="center">
   The project is about sorting integers with a given set of instruction. The instructions are : <br><br>
-  <B>swap a (sa) :</b> wap the first 2 elements at the top of stack a.<br>
-  swap b (sb) :
+  <B>swap a (sa) :</b> swap the first 2 elements at the top of stack a.<br>
+  <B>swap b (sb) :</b> swap the first 2 elements at the top of stack b.<br>
+  <b>swap a&b (ss) : </b> swap the first 2 elements at the top of both lists.<br>
+  
   
  <!-- INSTALLATION -->
 ## Installation
