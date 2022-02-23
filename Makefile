@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aguay <aguay@student.42.fr>                +#+  +:+       +#+         #
+#    By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 08:51:26 by mmondell          #+#    #+#              #
-#    Updated: 2022/02/21 07:29:22 by aguay            ###   ########.fr        #
+#    Updated: 2022/02/22 21:00:35 by tonyg            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ SRCS_FILES		=				\
 			l_list.c			\
 			l_list_utils.c		\
 			ft_itol.c			\
-			math.c				\
+			init_pos.c			\
 			ft_free2d.c			\
 			push.c				\
 			reverse_rotate.c	\

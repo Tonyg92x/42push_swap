@@ -6,60 +6,63 @@
 /*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/19 14:48:31 by tonyg            ###   ########.fr       */
+/*   Updated: 2022/02/22 21:09:46 by tonyg            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-void	sort_b(t_llists *l)
-{
-	while (l->len_b > 0)
-	{
-		if (l->start_b->position_wanted == l->count)
-		{
-			pa(l);
-			rra(l, false);
-			l->count++;
-		}
-		else
-			rb(l, false);
-	}
-}
-
-// Fonction that push all elements under the median in list b
-void	get_lowest_half_up(t_llists *l)
+//	Return true if the list start entered has
+//	the smallest pos wanted in the list.
+bool	smallest_pos_wanted(t_llist *l)
 {
 	int	i;
 
-	i = l->len_a;
-	while (i > 0)
+	i = l->position_wanted;
+	while (l->prev != NULL)
+		l = l->prev;
+	while (l)
 	{
-		if (l->start_a->position_wanted < l->median)
-			pb(l);
-		else
-			ra(l, false);
-		i--;
+		if (l->position_wanted < i)
+			return (false);
+		l = l->next;
 	}
-	i = l->len_b;
+	return (true);
 }
 
-void	get_highest_quater_up(t_llists *l)
+//	Return true if the list start entered has
+//	the biggest pos wanted in the list.
+bool	biggest_pos_wanted(t_llist *l)
 {
 	int	i;
 
-	i = l->median;
-	while (i > 0)
+	i = l->position_wanted;
+	while (l->prev != NULL)
+		l = l->prev;
+	while (l)
 	{
-		if (l->start_a->position_wanted > l->un_quart)
-			pb(l);
-		i--;
+		if (l->position_wanted > i)
+			return (false);
+		l = l->next;
 	}
+	return (true);
 }
 
-void	get_highest_half_up(t_llists *l)
+//	Get in the start of a list with his size.
+//	get out the median of the pos wanted.
+int	get_median(t_llist *l, int size) // NOT DONE NEED TO CLASSE THE TABLE WHEN FULLING IT
 {
-	while (l->start_a->position_wanted >= l->median)
-		pb(l);
+	int		tab[size];
+	int		i;
+	t_llist	*temp;
+
+	i = 0;
+	temp = l;
+	while (temp)
+	{
+		tab[i++] = temp->position_wanted;
+		temp = temp->next;
+	}
+	return (tab[size / 2]);
 }

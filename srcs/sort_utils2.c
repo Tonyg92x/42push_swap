@@ -6,48 +6,13 @@
 /*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/22 16:12:16 by tonyg            ###   ########.fr       */
+/*   Updated: 2022/02/22 20:47:46 by tonyg            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-//	Return true if the list start entered has
-//	the smallest pos wanted in the list.
-bool	smallest_pos_wanted(t_llist *l)
-{
-	int	i;
-
-	i = l->position_wanted;
-	while (l->prev != NULL)
-		l = l->prev;
-	while (l)
-	{
-		if (l->position_wanted < i)
-			return (false);
-		l = l->next;
-	}
-	return (true);
-}
-
-//	Return true if the list start entered has
-//	the biggest pos wanted in the list.
-bool	biggest_pos_wanted(t_llist *l)
-{
-	int	i;
-
-	i = l->position_wanted;
-	while (l->prev != NULL)
-		l = l->prev;
-	while (l)
-	{
-		if (l->position_wanted > i)
-			return (false);
-		l = l->next;
-	}
-	return (true);
-}
 
 //	Return true if the list a is sorted
 bool	sorted_a(t_llists *l)

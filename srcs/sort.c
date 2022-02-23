@@ -6,7 +6,7 @@
 /*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/22 16:17:11 by tonyg            ###   ########.fr       */
+/*   Updated: 2022/02/22 20:49:07 by tonyg            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "push_swap.h"
 
 //	sort 3 elements of list a
-void	sort_o3(t_llists *l)
+static void	sort_o3(t_llists *l)
 {
 	t_llist	*temp;
 
@@ -42,7 +42,7 @@ void	sort_o3(t_llists *l)
 }
 
 //	sort 5 element of list a
-void	sort_o5(t_llists *l)
+static void	sort_o5(t_llists *l)
 {
 	int	i;
 
@@ -75,6 +75,6 @@ void	sort_ll(t_llists *l)
 		sort_o3(l);
 	else if (l->option == 5)
 		sort_o5(l);
-	else
-		sort(l);
+	// else
+	// 	sort(l);
 }

@@ -6,7 +6,7 @@
 /*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/22 15:14:46 by tonyg            ###   ########.fr       */
+/*   Updated: 2022/02/22 21:01:09 by tonyg            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	main(int argc, char **argv)
 		return (0);
 	argv = initiate_argv(argv, argc);
 	l->start_a = init_list(argv, l);
+	init_pos_wanted(l);
 	if (l->start_a == NULL)
 	{
 		free(l);
@@ -41,11 +42,11 @@ int	main(int argc, char **argv)
 			ft_free2d(argv);
 		return (0);
 	}
-	init_med(l);
+	init_option(l);
 	if (l->start_a == NULL)
 		return (0);
 	sort_ll(l);
-	// print_lists(l);
+	print_lists(l);
 	if (argc == 2)
 		ft_free2d(argv);
 	ft_free_lists(l);

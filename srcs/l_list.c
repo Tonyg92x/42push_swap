@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   l_list.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/21 06:42:53 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/22 20:26:41 by tonyg            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,21 +114,11 @@ t_llist	*init_list(char **argv, t_llists *l)
 }
 
 // Populate data on the list to organise sorting
-void	init_med(t_llists *l)
+void	init_option(t_llists *l)
 {
-	int		median;
-
-	median = get_median(l);
-	l->un_huit = median / 4;
-	l->un_quart = median / 2;
-	l->median = median;
 	l->count = 0;
 	if (l->len_a <= 3)
 		l->option = 3;
 	else if (l->len_a <= 5)
 		l->option = 5;
-	else if (l->len_a <= 110)
-		l->option = 100;
-	else
-		l->option = 500;
 }

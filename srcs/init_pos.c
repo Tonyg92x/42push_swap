@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/16 12:27:08 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/22 20:59:11 by tonyg            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	fill_wanted_pos(t_llists *l, int *tab)
 }
 
 // Get the value of the median
-int	get_median(t_llists *l)
+int	init_pos_wanted(t_llists *l)
 {
 	int	*tab;
 

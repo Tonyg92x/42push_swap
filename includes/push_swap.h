@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/21 11:14:21 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/22 21:08:39 by tonyg            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,6 @@ typedef struct linked_lists
 	struct linked_list	*start_b;
 	int					len_a;
 	int					len_b;
-	int					un_huit;
-	int					un_quart;
-	int					median;
 	int					count;
 	int					option;
 }					t_llists;
@@ -52,8 +49,6 @@ bool		check_doublons(char **argv);
 t_llist		*init_list(char **argv, t_llists *l);
 void		print_lists(t_llists *l);
 void		ft_free_lists(t_llists *l);
-void		add_top(t_llist *start, int contenu, int *len, int wanted);
-void		delete_top(t_llist *start, int *len);
 
 // Push_swap functions
 void		sa(t_llists *l, bool ss);
@@ -75,18 +70,15 @@ void		ft_free2d(char **string);
 
 // algo fonctions
 void		sort_ll(t_llists *l);
-void		init_med(t_llists *l);
-int			smallest_list(t_llists *l);
+void		init_option(t_llists *l);
 int			biggest_list(t_llists *l);
-int			get_median(t_llists *l);
+int			init_pos_wanted(t_llists *l);
 void		sort_b(t_llists *l);
-void		get_lowest_half_up(t_llists *l);
-void		get_highest_half_up(t_llists *l);
-void		get_highest_quater_up(t_llists *l);
 bool		sorted(t_llists *l);
 bool		sorted_a(t_llists *l);
 bool		sorted_b(t_llists *l);
 bool		smallest_pos_wanted(t_llist *l);
 bool		biggest_pos_wanted(t_llist *l);
+int			get_median(t_llist *l, int size);
 
 #endif
