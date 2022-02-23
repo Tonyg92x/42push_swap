@@ -37,11 +37,12 @@
 
 <p align="center">
   The project is about sorting integers with a given set of instruction. The instructions are : <br><br>
-  <B>swap a (sa) :</b> swap the first 2 elements at the top of stack a.<br>
-  <B>swap b (sb) :</b> swap the first 2 elements at the top of stack b.<br>
-  <b>swap a&b (ss) : </b> swap the first 2 elements at the top of both lists.<br>
-  
-  
+  <B>swap a (sa) :</b> Swap the first 2 elements at the top of stack a.<br>
+  <B>swap b (sb) :</b> Swap the first 2 elements at the top of stack b.<br>
+  <B>swap a&b (ss) : </b> Swap the first 2 elements at the top of both lists.<br>
+  <B>push a (pa) : </b> Take the first element of the list b and put it at the top of the list a<br>
+  <B>push b (pb) : </b> Take the first element of the list a and put it at the top of the list b<br>
+  <B>rotate a (ra) : </b> Shift up all elements of stack a by 1. The first element becomes the last one.<br>
  <!-- INSTALLATION -->
 ## Installation
 ```markdown
