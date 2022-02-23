@@ -36,8 +36,8 @@
 ## About The Project
 
 <p align="center">
-  The project is about sorting integers with a given set of instruction. The instructions are : <br>
-  swap a (sa) : wap the first 2 elements at the top of stack a.<br>
+  The project is about sorting integers with a given set of instruction. The instructions are : <br><br>
+  <B>swap a (sa) :</b> wap the first 2 elements at the top of stack a.<br>
   swap b (sb) :
   
  <!-- INSTALLATION -->
