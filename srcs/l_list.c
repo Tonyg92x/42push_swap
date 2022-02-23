@@ -6,7 +6,7 @@
 /*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/23 07:55:54 by tonyg            ###   ########.fr       */
+/*   Updated: 2022/02/23 09:57:33 by tonyg            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,6 @@ t_llist	*init_list(char **argv, t_llists *l)
 void	init_option(t_llists *l)
 {
 	l->count = 0;
-	l->pushed = 0;
 	if (l->len_a <= 3)
 		l->option = 3;
 	else if (l->len_a <= 5)

@@ -6,7 +6,7 @@
 /*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/23 09:06:35 by tonyg            ###   ########.fr       */
+/*   Updated: 2022/02/23 09:55:15 by tonyg            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,28 +74,29 @@ static void	sort(t_llists *l)
 		while (l->len_b > 12)
 			push_med_b(l);
 		sort_b(l);
-		pushed_back(l);
-	}
-	while (l->start_a->position_wanted != 0)
-	{
-		if (l->start_a->position_wanted == l->count)
-		{
-			if (l->len_b > 1 && l->start_b->position_wanted > l->start_b->next->position_wanted)
-				rr(l);
-			else
-				ra(l, false);
-			l->count++;
-		}
-		else
+		while (l->start_a->position_wanted < quarter(l, l->len_a))
 			pb(l);
 	}
-	while (l->len_b > 0)
-	{
-		while (l->len_b > 12)
-			push_med_b(l);
-		sort_b(l);
-		pushed_back(l);
-	}
+	// while (l->start_a->position_wanted != 0)
+	// {
+	// 	if (l->start_a->position_wanted == l->count)
+	// 	{
+	// 		if (l->len_b > 1 && l->start_b->position_wanted > l->start_b->next->position_wanted)
+	// 			rr(l);
+	// 		else
+	// 			ra(l, false);
+	// 		l->count++;
+	// 	}
+	// 	else
+	// 		pb(l);
+	// }
+	// while (l->len_b > 0)
+	// {
+	// 	while (l->len_b > 12)
+	// 		push_med_b(l);
+	// 	sort_b(l);
+	// 	pushed_back(l);
+	// }
 }
 
 // Solve efficiently the sorting of integer agument

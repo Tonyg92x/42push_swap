@@ -6,7 +6,7 @@
 /*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/23 08:23:08 by tonyg            ###   ########.fr       */
+/*   Updated: 2022/02/23 09:42:24 by tonyg            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void	push_med_b(t_llists *l)
 		else if (l->start_b->position_wanted > median)
 		{
 			pa(l);
-			l->pushed++;
 		}
 		else
 			rb(l, false);
