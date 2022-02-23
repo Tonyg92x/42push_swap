@@ -43,7 +43,9 @@
   <B>push a (pa) : </b> Take the first element of the list b and put it at the top of the list a<br>
   <B>push b (pb) : </b> Take the first element of the list a and put it at the top of the list b<br>
   <B>rotate a (ra) : </b> Shift up all elements of stack a by 1. The first element becomes the last one.<br>
- <!-- INSTALLATION -->
+  
+
+  <!-- INSTALLATION -->
 ## Installation
 ```markdown
 git clone git@github.com:Tonyg92x/42Push_swap.git
