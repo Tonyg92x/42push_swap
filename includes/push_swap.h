@@ -6,7 +6,7 @@
 /*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/23 09:47:57 by tonyg            ###   ########.fr       */
+/*   Updated: 2022/02/23 10:43:36 by tonyg            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,5 @@ void		push_med_b(t_llists *l);
 void		sort_b(t_llists	*l);
 void		first_push(t_llists *l);
 int			smal_pos(t_llist *l, int *plancher);
-int			quarter(t_llists *l, int size);
-
+void		push_back(t_llists *l, int len, int limit);
 #endif
