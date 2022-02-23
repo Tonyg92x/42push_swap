@@ -27,10 +27,10 @@
     <img src="images/42_Logo.svg.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">get_next_line</h3>
+<h3 align="center">Push Swap</h3>
 
   <p align="center">
-    Home made get_next_line function for c/c++ programming. Project of 42 cursus.
+    42 Project of 42 cursus
   </p>
 </div>
 
