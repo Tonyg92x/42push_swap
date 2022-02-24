@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/23 10:59:50 by tonyg            ###   ########.fr       */
+/*   Updated: 2022/02/24 11:06:22 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ static void	sort_o3(t_llists *l)
 			sa(l, false);
 			rra(l, false);
 		}
-		else if (smallest_pos_wanted(temp->next) && biggest_pos_wanted(temp->next->next))
+		else if (smallest_pos_wanted(temp->next)
+			&& biggest_pos_wanted(temp->next->next))
 			sa(l, false);
-		else if  (smallest_pos_wanted(temp->next))
+		else if (smallest_pos_wanted(temp->next))
 			ra(l, false);
-		else if (smallest_pos_wanted(temp->next->next) && biggest_pos_wanted(temp->next))
+		else if (smallest_pos_wanted(temp->next->next)
+			&& biggest_pos_wanted(temp->next))
 			rra(l, false);
 		else
 		{
@@ -169,7 +171,6 @@ static void	sort(t_llists *l)
 				pb(l);
 		}
 	}
-	
 }
 
 // Solve efficiently the sorting of integer agument
@@ -177,7 +178,7 @@ static void	sort(t_llists *l)
 void	sort_ll(t_llists *l)
 {
 	if (sorted_a(l))
-		return;
+		return ;
 	if (l->option == 3)
 		sort_o3(l);
 	else if (l->option == 5)

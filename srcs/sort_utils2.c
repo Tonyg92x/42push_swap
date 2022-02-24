@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/23 09:42:24 by tonyg            ###   ########.fr       */
+/*   Updated: 2022/02/24 11:09:02 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
-
 
 //	Return true if the list a is sorted
 bool	sorted_a(t_llists *l)

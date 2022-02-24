@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/23 09:41:15 by tonyg            ###   ########.fr       */
+/*   Updated: 2022/02/24 11:08:18 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ int	smal_pos(t_llist *l, int *plancher)
 	temp = l;
 	while (temp)
 	{
-		if (temp->position_wanted < retour && temp->position_wanted > (*plancher))
+		if (temp->position_wanted < retour
+			&& temp->position_wanted > (*plancher))
 			retour = temp->position_wanted;
 		temp = temp->next;
 	}
@@ -72,7 +73,7 @@ int	smal_pos(t_llist *l, int *plancher)
 //	get out the median of the pos wanted.
 int	get_median(t_llist *l, int size)
 {
-	int		tab[size];
+	int		tab[1000000];
 	int		i;
 	int		plancher;
 
@@ -95,7 +96,8 @@ void	first_push(t_llists *l)
 	{
 		if (l->start_a->position_wanted < median)
 			pb(l);
-		else if (l->len_b > 1 && l->start_b->position_wanted > l->start_b->next->content)
+		else if (l->len_b > 1 && l->start_b->position_wanted
+			> l->start_b->next->content)
 			rr(l);
 		else
 			ra(l, false);
