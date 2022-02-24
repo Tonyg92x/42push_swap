@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/24 11:02:05 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/24 11:16:21 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,8 @@ static char	**initiate_argv(char **argv, int argc)
 	return (&argv[1]);
 }
 
-int	main(int argc, char **argv)
+static bool	initialise(t_llists *l, char **argv, int argc)
 {
-	t_llists	*l;
-
-	l = malloc(sizeof(t_llists));
-	if (!l)
-		return (0);
-	l->len_a = 1;
-	l->len_b = 0;
-	l->start_b = NULL;
-	if (argc <= 1)
-		return (0);
 	argv = initiate_argv(argv, argc);
 	l->start_a = init_list(argv, l);
 	init_pos_wanted(l);
@@ -40,10 +30,27 @@ int	main(int argc, char **argv)
 		free(l);
 		if (argc == 2)
 			ft_free2d(argv);
-		return (0);
+		return (true);
 	}
 	init_option(l);
 	if (l->start_a == NULL)
+		return (true);
+	return (false);
+}
+
+int	main(int argc, char **argv)
+{
+	t_llists	*l;
+
+	if (argc <= 1)
+		return (0);
+	l = malloc(sizeof(t_llists));
+	if (!l)
+		return (0);
+	l->len_a = 1;
+	l->len_b = 0;
+	l->start_b = NULL;
+	if (initialise(l, argv, argc))
 		return (0);
 	sort_ll(l);
 	if (argc == 2)

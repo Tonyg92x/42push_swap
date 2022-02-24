@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/23 10:43:36 by tonyg            ###   ########.fr       */
+/*   Updated: 2022/02/24 11:52:38 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,9 @@ void		sort_b(t_llists	*l);
 void		first_push(t_llists *l);
 int			smal_pos(t_llist *l, int *plancher);
 void		push_back(t_llists *l, int len, int limit);
+void		sort_first_quarter(t_llists *l, int quarter);
+void		sort_second_quarter(t_llists *l, int median);
+void		sort_third_quarter(t_llists *l, int quarter);
+void		sort_last_quarter(t_llists *l);
+
 #endif
