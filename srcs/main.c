@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/24 11:16:21 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/24 14:11:30 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static bool	initialise(t_llists *l, char **argv, int argc)
 {
 	argv = initiate_argv(argv, argc);
 	l->start_a = init_list(argv, l);
-	init_pos_wanted(l);
 	if (l->start_a == NULL)
 	{
 		free(l);
@@ -32,6 +31,7 @@ static bool	initialise(t_llists *l, char **argv, int argc)
 			ft_free2d(argv);
 		return (true);
 	}
+	init_pos_wanted(l);
 	init_option(l);
 	if (l->start_a == NULL)
 		return (true);

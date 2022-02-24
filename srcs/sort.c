@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/24 11:52:46 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/24 13:45:00 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,25 @@ static void	sort(t_llists *l)
 	sort_first_quarter(l, quarter);
 	sort_second_quarter(l, median);
 	while (l->start_a->position_wanted != 0)
-	{
-		if (l->start_a->position_wanted == l->count)
-		{
-			l->count++;
-			ra(l, false);
-		}
-		else
-			pb(l);
-	}
+		rotate_sort(l);
 	quarter = get_median(l->start_b, l->len_b);
 	sort_third_quarter(l, quarter);
 	sort_last_quarter(l);
+}
+
+void	rotate_sort(t_llists *l)
+{
+	if (l->start_a->position_wanted == l->count)
+	{
+		l->count++;
+		if (l->len_b > 1 && l->start_b->position_wanted
+			> l->start_b->next->position_wanted)
+			rr(l);
+		else
+			ra(l, false);
+	}
+	else
+		pb(l);
 }
 
 // Solve efficiently the sorting of integer agument

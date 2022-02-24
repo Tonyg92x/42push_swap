@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/24 11:52:38 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/24 13:17:24 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ void		sort_first_quarter(t_llists *l, int quarter);
 void		sort_second_quarter(t_llists *l, int median);
 void		sort_third_quarter(t_llists *l, int quarter);
 void		sort_last_quarter(t_llists *l);
+void		rotate_sort(t_llists *l);
 
 #endif
