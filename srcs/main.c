@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/24 14:11:30 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/24 14:51:17 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,30 @@
 
 static char	**initiate_argv(char **argv, int argc)
 {
+	char	**retour;
+	int		i;
+
+	i = 0;
 	if (argc == 2)
-		return (ft_split(argv[1], ' '));
+	{
+		retour = ft_split(argv[1], ' ');
+		if (retour[1] == NULL)
+		{
+			free(retour[0]);
+			if (retour)
+				free(retour);
+			return (NULL);
+		}
+		return (retour);
+	}
 	return (&argv[1]);
 }
 
 static bool	initialise(t_llists *l, char **argv, int argc)
 {
 	argv = initiate_argv(argv, argc);
+	if (argv == NULL)
+		return (true);
 	l->start_a = init_list(argv, l);
 	if (l->start_a == NULL)
 	{
