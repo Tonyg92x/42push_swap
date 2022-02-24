@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/18 10:43:49 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/24 11:03:14 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ra(t_llists *l, bool rr)
 	t_llist	*temp2;
 
 	if (l->len_a < 2)
-		return;
+		return ;
 	temp = l->start_a;
 	l->start_a->next->prev = NULL;
 	l->start_a = l->start_a->next;
@@ -43,7 +43,7 @@ void	rb(t_llists *l, bool rr)
 	t_llist	*temp2;
 
 	if (l->len_b < 2)
-		return;
+		return ;
 	temp = l->start_b;
 	l->start_b->next->prev = NULL;
 	l->start_b = l->start_b->next;

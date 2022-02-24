@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   l_list_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/19 12:38:41 by tonyg            ###   ########.fr       */
+/*   Updated: 2022/02/24 11:02:00 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,40 +48,6 @@ bool	check_digit(char **argv)
 		i++;
 	}
 	return (false);
-}
-
-// Print every element of both list
-void	print_lists(t_llists *l)
-{
-	t_llist	*a;
-	t_llist	*b;
-	int		len_a;
-	int		len_b;
-
-	len_a = l->len_a;
-	len_b = l->len_b;
-	a = l->start_a;
-	b = l->start_b;
-	ft_printf("\na\t\tb");
-	ft_printf("\n------------------------\n");
-	while (len_a > 0 || len_b > 0)
-	{
-		if (len_a > 0)
-		{
-			ft_printf("%d", a->content);
-			a = a->next;
-			len_a--;
-		}
-		ft_printf("\t\t");
-		if (len_b > 0)
-		{
-			ft_printf("%d", b->content);
-			b = b->next;
-			len_b--;
-		}
-		ft_printf("\n");
-	}
-	ft_printf("------------------------\n");
 }
 
 void	ft_free_lists(t_llists *l)

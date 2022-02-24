@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/18 14:09:57 by aguay            ###   ########.fr       */
+/*   Updated: 2022/02/24 11:02:31 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	pa(t_llists *l)
 	t_llist	*temp_a;
 
 	if (l->len_b < 1)
-		return;
+		return ;
 	temp_a = l->start_b;
 	if (l->len_b > 1)
 	{
@@ -49,7 +49,7 @@ void	pb(t_llists *l)
 	t_llist	*temp_b;
 
 	if (l->len_a < 1)
-		return;
+		return ;
 	temp_b = l->start_a;
 	if (l->len_a > 1)
 	{
