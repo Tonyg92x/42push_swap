@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tonyg <tonyg@student.42.fr>                +#+  +:+       +#+         #
+#    By: aguay <aguay@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 08:51:26 by mmondell          #+#    #+#              #
-#    Updated: 2022/02/23 07:49:23 by tonyg            ###   ########.fr        #
+#    Updated: 2022/02/24 10:55:53 by aguay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,22 +55,14 @@ SRCS_FILES		=				\
 			sort_utils2.c		\
 			sort_utils3.c		\
 
-## ----- BONUS SOURCE FILES ----- ##
-#*B_SRCS_FILES	= 
-
 ## ----- .C TO .O CONVERT ----- ##
 OBJ_FILES		= $(SRCS_FILES:.c=.o)
-#*B_OBJ_FILES		= $(B_SRCS_FILES:.c=.o)
 
 ## ----- ADDPREFIX TO FILES ----- ##
 # MAIN PROGRAMM #
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 OBJS			= $(addprefix $(OBJ_DIR), $(OBJ_FILES))
-VPATH			= $(SRCS_DIR) #$(B_SRCS_DIR)
-
-# BONUS PART #
-#*B_SRCS			= $(addprefix $(B_SRCS_DIR), $(B_SRCS_FILES))
-#*B_OBJS			= $(addprefix $(OBJ_DIR), $(B_OBJ_FILES))
+VPATH			= $(SRCS_DIR) 
 
 #--------------------------------------------------------------#
 
@@ -91,6 +83,8 @@ LIBFT			= make -C $(LIBFT_DIR)
 
 ## ----- ALL ACTION DEPENDENCIES AND RECIPE FOR MAIN PROGRAM ----- ##
 all: obj $(NAME)
+	rm -rf obj
+	clear
 	@echo "$(GREEN)Compilation Completed Successfully$(NORMAL)"
 
 $(OBJ_DIR)%.o:%.c
@@ -102,24 +96,17 @@ $(NAME): $(OBJS)
 obj:
 	@mkdir -p $(OBJ_DIR)
 
-## ----- ACTIONS FOR THE BONUS PART ----- ##
-#*bonus: $(B_NAME)
-#*	@echo "$(GREEN)Bonus Files Compiled!$(NORMAL)"
-#*
-#*$(B_NAME): $(B_OBJS)
-#*	$(LIBFT)
-#*	$(CC) $(B_OBJS) -L$(LIBFT_DIR) -lft -o $(B_NAME)
-	
 ## ----- CLEAN COMMANDS ----- ##
 clean:
 	$(RM) $(OBJS) ##$(B_OBJS)
 	@make -C $(LIBFT_DIR) clean
+	clear
 
 fclean: clean
 	@rm -f $(NAME)
-#*	$(RM) $(B_NAME) $(OBJ_DIR)
 	@make -C $(LIBFT_DIR) fclean
+	clear
 
-re: fclean all bonus
+re: fclean all
 
 .PHONY: all clean fclean re
