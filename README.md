@@ -35,7 +35,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<p align="center">
+<p align="left">
   The project is about sorting integers with a given set of instruction. The instructions are : <br><br>
   <B>swap a (sa) :</b> Swap the first 2 elements at the top of stack a.<br>
   <B>swap b (sb) :</b> Swap the first 2 elements at the top of stack b.<br>
