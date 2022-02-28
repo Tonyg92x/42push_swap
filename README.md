@@ -49,7 +49,7 @@
   <B>reverse rotate b (rrb) : </b> Shift down all elements of stack b by 1. The last element become the first one.<br>
   <B>reverse rotate a&b (rrr) : </b> Do rra and rrb.<br><br>
   
-  You have to sort any number of elements in the smallest number of operations possible. You can enter arguments in one string separated by a space, or enter multiple arguments. If you enter two times the same number, the program return an error. If any arguments are higher or lower then int limit, return an error.
+  You have to sort any number of elements in the smallest number of operations possible. You can enter arguments in one string separated by a space, or enter multiple arguments. If you enter two times the same number, the program return an error. If any arguments are higher or lower then int limit, return an error and finally if any argument contain a letter return an error. The program display every operation to sort the arguments passed, split by \n.
   
 
   <!-- INSTALLATION -->
@@ -58,7 +58,7 @@ Use this command to clone the repository :
 ```markdown
 git clone git@github.com:Tonyg92x/42Push_swap.git
 ```
-Then you can go in the folder and write the command "make" to compile the library and everything needed for the program. The executable is named push_swap. You can test the program using "./push_swap x" where x is the argument. The program will display all operation needed to sort arguments passed.
+Then you can go in the folder and write the command "make" to compile the library and everything needed for the program. The executable is named push_swap. You can test the program using "./push_swap x" where x is the argument. The program will display all operation needed to sort the arguments passed.
  
 <!-- Authors -->
 ## Authors
