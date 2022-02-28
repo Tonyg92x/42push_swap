@@ -54,10 +54,12 @@
 
   <!-- INSTALLATION -->
 ## Installation
+Use this command to clone the repository :
 ```markdown
 git clone git@github.com:Tonyg92x/42Push_swap.git
 ```
-
+Then you can go in the folder and write the command "make" to compile the library and everything needed for the program. The executable is named push_swap. You can test the program using "./push_swap x" where x is the argument. The program will display all operation needed to sort arguments passed.
+ 
 <!-- Authors -->
 ## Authors
 <p align="left">
