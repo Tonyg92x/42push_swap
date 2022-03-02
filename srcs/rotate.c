@@ -6,12 +6,29 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/24 11:03:14 by aguay            ###   ########.fr       */
+/*   Updated: 2022/03/02 13:44:37 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
+
+void	sort_under_100(t_llists *l)
+{
+	l->count = l->len_a - 1;
+	while (l->start_a != NULL)
+	{
+		if (l->start_a->position_wanted == l->count)
+		{
+			l->count--;
+			pb(l);
+		}
+		else
+			ra(l, false);
+	}
+	while (l->start_b != NULL)
+		pa(l);
+}
 
 // Rotate every element by one to the top.
 // Element 0 go under the stack.

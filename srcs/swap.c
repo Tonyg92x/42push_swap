@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/24 11:13:05 by aguay            ###   ########.fr       */
+/*   Updated: 2022/03/02 13:35:32 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	sa(t_llists *l, bool ss)
 		temp->next = temp2;
 	}
 	if (ss == false)
-		ft_printf("sa \n");
+		ft_printf("sa\n");
 }
 
 // Switch the first element of the 
@@ -86,7 +86,7 @@ void	sb(t_llists *l, bool ss)
 		temp->next = temp2;
 	}
 	if (ss == false)
-		ft_printf("sb \n");
+		ft_printf("sb\n");
 }
 
 // Switch the first element with the second
@@ -97,5 +97,5 @@ void	ss(t_llists *l)
 		sa(l, true);
 	if (l->len_b > 1)
 		sb(l, true);
-	ft_printf("ss \n");
+	ft_printf("ss\n");
 }

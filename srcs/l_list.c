@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/24 11:00:11 by aguay            ###   ########.fr       */
+/*   Updated: 2022/03/02 13:41:57 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,10 @@ t_llist	*init_list(char **argv, t_llists *l)
 void	init_option(t_llists *l)
 {
 	l->count = 0;
-	if (l->len_a <= 3)
+	if (l->len_a == 3)
 		l->option = 3;
-	else if (l->len_a <= 5)
+	else if (l->len_a == 5)
 		l->option = 5;
+	else if (l->len_a < 90)
+		l->option = 100;
 }

@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/24 13:45:00 by aguay            ###   ########.fr       */
+/*   Updated: 2022/03/02 13:42:47 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ void	sort_ll(t_llists *l)
 		sort_o3(l);
 	else if (l->option == 5)
 		sort_o5(l);
+	else if (l->option == 100)
+		sort_under_100(l);
 	else
 		sort(l);
 }
