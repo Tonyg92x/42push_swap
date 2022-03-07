@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/24 10:59:54 by aguay            ###   ########.fr       */
+/*   Updated: 2022/03/07 10:03:16 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,13 @@ int	smallest_value(t_llists *l, int *plancher)
 	retour = 2147483647;
 	while (p)
 	{
-		if (p->content < retour && p->content > (*plancher))
+		if (p->content < retour && p->content >= (*plancher))
+		{
 			retour = p->content;
+		}
 		p = p->next;
 	}
 	(*plancher) = retour;
-	return (retour);
-}
-
-//	Return the biggest value of the list b
-int	biggest_value(t_llists *l)
-{
-	t_llist	*p;
-	int		retour;
-
-	p = l->start_b;
-	retour = p->content;
-	while (p->next != NULL)
-	{
-		if (p->content > retour)
-			retour = p->content;
-		p = p->next;
-	}
 	return (retour);
 }
 

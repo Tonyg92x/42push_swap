@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/03/02 13:42:47 by aguay            ###   ########.fr       */
+/*   Updated: 2022/03/07 10:06:12 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,9 @@ void	sort_ll(t_llists *l)
 {
 	if (sorted_a(l))
 		return ;
-	if (l->option == 3)
+	if (l->option == 2)
+		sa(l, false);
+	else if (l->option == 3)
 		sort_o3(l);
 	else if (l->option == 5)
 		sort_o5(l);
