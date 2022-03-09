@@ -6,7 +6,7 @@
 #    By: aguay <aguay@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 08:51:26 by mmondell          #+#    #+#              #
-#    Updated: 2022/01/18 10:14:11 by aguay            ###   ########.fr        #
+#    Updated: 2022/03/09 08:03:43 by aguay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,7 +88,7 @@ OBJ_FILES		= $(SRCS_FILES:.c=.o)
 # MAIN PROGRAMM #
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 OBJS			= $(addprefix $(OBJ_DIR), $(OBJ_FILES))
-VPATH			= $(SRCS_DIR) #$(B_SRCS_DIR)
+VPATH			= $(SRCS_DIR)
 #--------------------------------------------------------------#
 
 ## ----- TOOLS AND COLORS ----- ##
@@ -114,6 +114,7 @@ $(OBJ_DIR)%.o:%.c
 $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
+
 obj:
 	@clear
 	@echo "$(RED) Making TonyG C library $(AQUA)"
@@ -123,6 +124,7 @@ obj:
 clean:
 	$(RM) $(OBJS) $(B_OBJS)
 	@rm -rf $(OBJ_DIR)
+
 fclean: clean
 	@rm -f $(NAME)
 

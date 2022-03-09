@@ -6,7 +6,7 @@
 #    By: aguay <aguay@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 08:51:26 by mmondell          #+#    #+#              #
-#    Updated: 2022/02/24 13:32:07 by aguay            ###   ########.fr        #
+#    Updated: 2022/03/09 08:10:28 by aguay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,6 @@ CFLAGS			= -Wall -Wextra -Werror -g
 
 ## ----- PATH TO FOLDERS ----- ##
 SRCS_DIR		= srcs/
-#*B_SRCS_DIR		= 
 
 OBJ_DIR			= obj/
 
@@ -59,7 +58,6 @@ SRCS_FILES		=				\
 OBJ_FILES		= $(SRCS_FILES:.c=.o)
 
 ## ----- ADDPREFIX TO FILES ----- ##
-# MAIN PROGRAMM #
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 OBJS			= $(addprefix $(OBJ_DIR), $(OBJ_FILES))
 VPATH			= $(SRCS_DIR) 
@@ -83,8 +81,6 @@ LIBFT			= make -C $(LIBFT_DIR)
 
 ## ----- ALL ACTION DEPENDENCIES AND RECIPE FOR MAIN PROGRAM ----- ##
 all: obj $(NAME)
-	rm -rf obj
-	clear
 	@echo "$(GREEN)Compilation Completed Successfully$(NORMAL)"
 
 $(OBJ_DIR)%.o:%.c
@@ -93,6 +89,7 @@ $(OBJ_DIR)%.o:%.c
 $(NAME): $(OBJS)
 	$(LIBFT)
 	$(CC) $(OBJS) libft/libft.a -o $(NAME)
+
 obj:
 	@mkdir -p $(OBJ_DIR)
 
@@ -100,12 +97,11 @@ obj:
 clean:
 	$(RM) $(OBJS) ##$(B_OBJS)
 	@make -C $(LIBFT_DIR) clean
-	clear
 
 fclean: clean
 	@rm -f $(NAME)
 	@make -C $(LIBFT_DIR) fclean
-	clear
+	rm -rf obj
 
 re: fclean all
 
