@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/03/02 13:44:37 by aguay            ###   ########.fr       */
+/*   Updated: 2022/03/09 09:23:11 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 
 void	sort_under_100(t_llists *l)
 {
-	l->count = l->len_a - 1;
 	while (l->start_a != NULL)
 	{
 		if (l->start_a->position_wanted == l->count)
 		{
-			l->count--;
+			l->count++;
 			pb(l);
 		}
 		else

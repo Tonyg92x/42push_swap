@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/03/07 10:03:16 by aguay            ###   ########.fr       */
+/*   Updated: 2022/03/09 13:15:31 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 #include "push_swap.h"
 
 //	Return the smallest value of the list a
-int	smallest_value(t_llists *l, int *plancher)
+long int	smallest_value(t_llists *l, long int *plancher)
 {
 	t_llist		*p;
-	int			retour;
+	long int	retour;
 
 	p = l->start_a;
 	retour = 2147483647;
 	while (p)
 	{
-		if (p->content < retour && p->content >= (*plancher))
+		if (p->content < retour && p->content > (*plancher))
 		{
 			retour = p->content;
 		}
@@ -34,16 +34,16 @@ int	smallest_value(t_llists *l, int *plancher)
 }
 
 //	Class every element in the wanted order
-int	*class_table(t_llists *l)
+long int	*class_table(t_llists *l)
 {
-	int		*tab;
-	int		size;
-	int		i;
-	int		plancher;
+	long int	*tab;
+	int			size;
+	int			i;
+	long int	plancher;
 
-	plancher = -2147483648;
+	plancher = -2147483649;
 	size = l->len_a;
-	tab = malloc(sizeof(int) * l->len_a);
+	tab = malloc(sizeof(long int) * l->len_a);
 	i = 0;
 	while (size > 0)
 	{
@@ -55,7 +55,7 @@ int	*class_table(t_llists *l)
 }
 
 //	Put the wanted position to every elements
-void	fill_wanted_pos(t_llists *l, int *tab)
+void	fill_wanted_pos(t_llists *l, long int *tab)
 {
 	int		i;
 	t_llist	*temp;
@@ -75,15 +75,15 @@ void	fill_wanted_pos(t_llists *l, int *tab)
 		}
 		i++;
 	}
+	return ;
 }
 
 // Get the value of the median
-int	init_pos_wanted(t_llists *l)
+void	init_pos_wanted(t_llists *l)
 {
-	int	*tab;
+	long int	*tab;
 
 	tab = class_table(l);
 	fill_wanted_pos(l, tab);
 	free(tab);
-	return (l->len_a / 2);
 }

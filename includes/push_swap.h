@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/03/02 13:42:29 by aguay            ###   ########.fr       */
+/*   Updated: 2022/03/09 13:13:15 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ typedef struct linked_lists
 
 // Linked list fonctions
 int			argv_size(char **argv);
-bool		lim_test(char **argv);
-bool		check_digit(char **argv);
-bool		check_doublons(char **argv);
+bool		lim_test(char **argv, t_llists *l);
+bool		check_digit(char **argv, t_llists *l);
+bool		check_doublons(char **argv, t_llists *l);
 t_llist		*init_list(char **argv, t_llists *l);
 void		print_lists(t_llists *l);
 void		ft_free_lists(t_llists *l);
@@ -72,7 +72,7 @@ void		ft_free2d(char **string);
 void		sort_ll(t_llists *l);
 void		init_option(t_llists *l);
 int			biggest_list(t_llists *l);
-int			init_pos_wanted(t_llists *l);
+void		init_pos_wanted(t_llists *l);
 bool		sorted(t_llists *l);
 bool		sorted_a(t_llists *l);
 bool		sorted_b(t_llists *l);

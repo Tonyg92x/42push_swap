@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/03/07 10:20:21 by aguay            ###   ########.fr       */
+/*   Updated: 2022/03/15 09:15:24 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "push_swap.h"
 
 // Fonction wich look in the list if any value is not in int limit.
-bool	lim_test(char **argv)
+bool	lim_test(char **argv, t_llists *l)
 {
 	int			i;
 	long int	content;
@@ -28,6 +28,7 @@ bool	lim_test(char **argv)
 		if (content > 2147483647 || content < -2147483648)
 		{
 			ft_printf("Error\n");
+			ft_free_lists(l);
 			return (true);
 		}
 		i++;
@@ -57,13 +58,12 @@ static bool	compare_elements(int *content, int size)
 		}
 		i++;
 	}
-	free(content);
 	return (false);
 }
 
 //	Fonction that return true if any arguments in
 //	argv are identical.
-bool	check_doublons(char **argv)
+bool	check_doublons(char **argv, t_llists *l)
 {
 	int		i;
 	int		*content;
@@ -78,7 +78,12 @@ bool	check_doublons(char **argv)
 		i++;
 	}
 	if (compare_elements(content, size))
+	{
+		free(content);
+		ft_free_lists(l);
 		return (true);
+	}
+	free(content);
 	return (false);
 }
 
@@ -90,11 +95,11 @@ t_llist	*init_list(char **argv, t_llists *l)
 	t_llist	*start_a;
 	t_llist	*temp;
 
-	if (lim_test(argv))
+	if (lim_test(argv, l))
 		return (NULL);
-	if (check_doublons(argv))
+	if (check_doublons(argv, l))
 		return (NULL);
-	if (check_digit(argv))
+	if (check_digit(argv, l))
 		return (NULL);
 	start_a = malloc(sizeof(t_llist));
 	start_a->content = ft_atoi(argv[0]);

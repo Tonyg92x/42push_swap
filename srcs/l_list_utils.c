@@ -6,7 +6,7 @@
 /*   By: aguay <aguay@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:25:02 by aguay             #+#    #+#             */
-/*   Updated: 2022/02/24 11:02:00 by aguay            ###   ########.fr       */
+/*   Updated: 2022/03/09 13:12:31 by aguay            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	argv_size(char **argv)
 	return (i);
 }
 
-bool	check_digit(char **argv)
+bool	check_digit(char **argv, t_llists *l)
 {
 	int	i;
 	int	y;
@@ -41,6 +41,7 @@ bool	check_digit(char **argv)
 			argv[i][y] != '-')
 			{
 				ft_printf("Error\n");
+				ft_free_lists(l);
 				return (true);
 			}
 			y++;

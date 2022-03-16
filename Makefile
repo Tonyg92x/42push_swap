@@ -6,7 +6,7 @@
 #    By: aguay <aguay@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/31 08:51:26 by mmondell          #+#    #+#              #
-#    Updated: 2022/03/09 08:10:28 by aguay            ###   ########.fr        #
+#    Updated: 2022/03/16 08:45:13 by aguay            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ B_NAME			= push_swap_bonus
 
 ## ----- CHOOSE COMPILER AND FLAGS ----- ##
 CC				= gcc
-CFLAGS			= -Wall -Wextra -Werror -g
+CFLAGS			= -Wall -Wextra -Werror
 
 ## ----- PATH TO FOLDERS ----- ##
 SRCS_DIR		= srcs/
@@ -81,6 +81,7 @@ LIBFT			= make -C $(LIBFT_DIR)
 
 ## ----- ALL ACTION DEPENDENCIES AND RECIPE FOR MAIN PROGRAM ----- ##
 all: obj $(NAME)
+	clear
 	@echo "$(GREEN)Compilation Completed Successfully$(NORMAL)"
 
 $(OBJ_DIR)%.o:%.c
@@ -93,15 +94,21 @@ $(NAME): $(OBJS)
 obj:
 	@mkdir -p $(OBJ_DIR)
 
+debug: CFLAGS += -g
+
+debug: all
+
 ## ----- CLEAN COMMANDS ----- ##
 clean:
 	$(RM) $(OBJS) ##$(B_OBJS)
 	@make -C $(LIBFT_DIR) clean
+	clear
 
 fclean: clean
 	@rm -f $(NAME)
 	@make -C $(LIBFT_DIR) fclean
 	rm -rf obj
+	clear
 
 re: fclean all
 
